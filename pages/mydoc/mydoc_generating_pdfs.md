@@ -141,7 +141,7 @@ There's another file (in the root directory of the theme) that is critical to th
 
 ## 4. Customize your headers and footers
 
-Open up the css/printstyles.css file and customize what you want for the headers and footers. At the very least, customize the email address (`youremail@domain.com`) that appears in the bottom left.
+Open up the assets/css/printstyles.css file and customize what you want for the headers and footers. At the very least, customize the email address (`youremail@domain.com`) that appears in the bottom left.
 
 Exactly how the print styling works here is pretty nifty. You don't need to understand the rest of the content in this section unless you want to customize your PDFs to look different from what I've configured. But I'm adding this information here in case you want to understand how to customize the look and feel of the PDF output.
 
@@ -219,7 +219,7 @@ The default_print.html layout will change the class of the `body` element based 
 ```
 {% endraw %}
 
-Now in the css/printstyles.css file, you can assign a page name based on a specific class:
+Now in the assets/css/printstyles.css file, you can assign a page name based on a specific class:
 
 ```css
 body.title { page: title }

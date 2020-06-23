@@ -50,7 +50,7 @@ If you're using a PC, rename your shell files with a .bat extension.
 
 If you see "page 0" cross-references in the PDF, the URL doesn't exist. Check to make sure you actually included this page in the build.
 
-If it's not a page but rather a file, you need to add a `noCrossRef` class to the file so that your print stylesheet excludes the counter from it. Add `class="noCrossRef"` as an attribute to the link. In the css/printstyles.css file, there is a style that should remove the counter from anchor elements with this class.
+If it's not a page but rather a file, you need to add a `noCrossRef` class to the file so that your print stylesheet excludes the counter from it. Add `class="noCrossRef"` as an attribute to the link. In the assets/css/printstyles.css file, there is a style that should remove the counter from anchor elements with this class.
 
 ### The PDF is blank
 

@@ -90,7 +90,7 @@ The theme has syntax highlighting specified in the configuration file as follows
 highlighter: rouge
 ```
 
-The syntax highlighting is done via the css/syntax.css file.
+The syntax highlighting is done via the assets/css/syntax.css file.
 
 ## Available lexers
 

@@ -14,7 +14,7 @@ The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflin
 
 ## External icons
 
-When you link to an external site, like [Jekyll](http://jekyllrb.com), an icon appears after the link. If you want to remove this icon, comment out this style in css/customstyles.css.
+When you link to an external site, like [Jekyll](http://jekyllrb.com), an icon appears after the link. If you want to remove this icon, comment out this style in assets/css/customstyles.css.
 
 ```css
 /* this part adds an icon after external links, using FontAwesome*/

@@ -103,7 +103,7 @@ One of the tabs needs to be set as active, depending on what tab you want to be 
 
 ## Sets a cookie
 
-The navtabs are part of Bootstrap, but this theme sets a cookie to remember the last tab's state. The js/customscripts.js file has a long chunk of JavaScript that sets the cookie. The JavaScript comes from [this StackOverflow thread](http://stackoverflow.com/questions/10523433/how-do-i-keep-the-current-tab-active-with-twitter-bootstrap-after-a-page-reload).
+The navtabs are part of Bootstrap, but this theme sets a cookie to remember the last tab's state. The assets/js/customscripts.js file has a long chunk of JavaScript that sets the cookie. The JavaScript comes from [this StackOverflow thread](http://stackoverflow.com/questions/10523433/how-do-i-keep-the-current-tab-active-with-twitter-bootstrap-after-a-page-reload).
 
 By setting a cookie, if the user refreshes the page, the active tab is the tab the user last selected (rather than defaulting to the default active tab).
 
