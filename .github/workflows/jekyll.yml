@@ -1,0 +1,30 @@
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    name: Test the default unidata-jekyll-theme site
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+          bundler-cache: true
+      - name: Install jekyll
+        run: |
+          gem install bundler
+          bundle install
+      - name: Build the default site
+        run: |
+          bundle exec jekyll clean
+          bundle exec jekyll build         
+      - uses: actions/upload-artifact@v2
+        if: success()
+        name: Upload a preview of the rendered html
+        with:
+          name: default_site_preview_${{ github.sha }}
+          path: _site
