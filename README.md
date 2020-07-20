@@ -80,3 +80,9 @@ gem sources --add https://artifacts.unidata.ucar.edu/repository/gems/
 
 Once you have done this, you can generally follow the jekyll documentation regarding the installation and use of a [gem based theme](https://jekyllrb.com/docs/themes/#installing-a-theme).
 As this theme progresses, we will add more details about Unidata specific extensions to the theme, but for now, consider this a work in progress :-)
+
+## Potentially useful utilities
+
+The `utilities/` directory contains some potentially useful scripts for generating tags and pdf docs.
+They were sort of cluttering up the main directory of the repo, so I moved them.
+
