@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
     spec.homepage      = "https://github.com/unidata/unidata-jekyll-theme"
     spec.license       = "MIT"
   
-    spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(_includes|_layouts|assets|licenses|README|_config\.yml)!i) }
+    spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(_includes|_layouts|_plugins|assets|licenses|README|_config\.yml)!i) }
   
     spec.add_runtime_dependency "jekyll", ">= 3.8", "< 4.2"
   end
