@@ -29,7 +29,7 @@ To build the static site, run:
 bundle exec jekyll build
 ~~~
 
-If you would like to remove any temporairy files generated from the build, run:
+If you would like to remove any temporary files generated from the build, run:
 
 ~~~sh
 bundle exec jekyll clean
@@ -48,9 +48,7 @@ In order to do this, you will need to install the nexus gem:
 gem install nexus
 ~~~
 
-Next, you need to configure the nexus publisher so that it knows about our artifacts server.
-
-First, you will need to increment the version of the gem to be published.
+Next, you will need to increment the version of the gem to be published.
 Change the `spec.version` entry in `unidata-jekyll-theme.gemspec` (following [Semantic Versioning](https://semver.org/)).
 Next, build the gem file using:
 
@@ -63,7 +61,7 @@ This will create a gem file called `unidata-jekyll-theme-<version>.gem`.
 Finally, publish to the Unidata nexus gem repository using
 
 ~~~sh
-gem nexus gemfile.gem
+gem nexus unidata-jekyll-theme-<version>.gem
 ~~~
 
 The first time you run this command, the nexus gem will ask you for the url of the server you would like to publish to, as well as your credentials.
