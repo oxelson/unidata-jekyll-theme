@@ -5,8 +5,10 @@ search: exclude
 ---
 
 [
+{% assign wrote_one = "false" %}
 {% for page in site.pages %}
 {% unless page.search == "exclude" %}
+{% unless wrote_one == "false" %},{% endunless %}
 {
 "title": "{{ page.title | escape }}",
 "tags": "{{ page.tags }}",
@@ -14,9 +16,10 @@ search: exclude
 "url": "{{ page.url | remove: "/"}}",
 "summary": "{{page.summary | strip }}"
 }
-{% unless forloop.last and site.posts.size < 1 %},{% endunless %}
+{% assign wrote_one = "true" %}
 {% endunless %}
 {% endfor %}
+{% if site.pages.size > 0 and site.posts.size > 0 %},{% endif %}
 
 {% for post in site.posts %}
 
