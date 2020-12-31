@@ -1,10 +1,30 @@
 plugins {
   id 'base'
   id 'maven-publish'
+  id 'edu.ucar.unidata.site.jekyll' version '0.0.1'
 }
 
 repositories {
   jcenter()
+  mavenCentral()
+  repositories {
+    maven {
+      // For Unidata Gradle Plugins
+      url 'https://artifacts.unidata.ucar.edu/repository/unidata-all/'
+    }
+  }
+}
+
+// use gemjar without the unidata jekyll theme and plugin gems bundled in
+configurations.gemjar {
+  resolutionStrategy.dependencySubstitution {
+    substitute(module('edu.ucar.unidata.site:jekyll-gems:0.0.1')).
+        using module('edu.ucar.unidata.site:jekyll-gems-minimum:0.0.1')
+  }
+}
+
+unidataJekyll {
+  sourceDirectory = file('.')
 }
 
 
