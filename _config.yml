@@ -39,7 +39,7 @@ port: 4000
 
 # these are the files and directories that jekyll will exclude from the build
 exclude:
-  - "build/"
+  - build/
   - gradle/
   - utils/
   - .idea/
@@ -50,6 +50,7 @@ exclude:
   - "gradlew*"
   - "*.gem"
   - "*.gemspec"
+  - "Gemfile.*"
   - README.md
   - .gitignore
 
