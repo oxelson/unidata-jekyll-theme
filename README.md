@@ -95,6 +95,8 @@ gem nexus .\unidata-jekyll-theme-0.0.1.gem
 
 ## Using the gem-based theme in your own documentation
 
+### Ruby
+
 Since the Unidata theme related gem files are hosted on our artifacts server, you will need to tell your Ruby installation that the artifacts server exists:
 
 ~~~sh
@@ -104,6 +106,12 @@ gem sources --add https://artifacts.unidata.ucar.edu/repository/gems/
 Once you have done this, you can generally follow the jekyll documentation regarding the installation and use of a [gem based theme](https://jekyllrb.com/docs/themes/#installing-a-theme).
 You will also need to make sure you include the `unidata-jekyll-plugin` gem.
 As this theme progresses, we will add more details about Unidata specific extensions to the theme, but for now, consider this a work in progress :-)
+
+### Java
+
+Unidata maintains a [gradle plugin](https://github.com/Unidata/unidata-jekyll-gradle) that utilizes JRuby to run Jekyll to build Jekyll sites using the Unidata theme maintained in this repository.
+While useful for Java based projects, it is also useful to those want to build documentation sets without installing the full Ruby stack.
+The only requirement for using the gradle plugin is Java version 8 or greater.
 
 ## Potentially useful utilities
 
