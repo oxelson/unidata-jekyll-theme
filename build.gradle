@@ -10,8 +10,8 @@ repositories {
 
 def gemVersionTheme = '0.0.1'
 def gemVersionPlugin = '0.0.1'
-def mavenVersionTheme = "${gemVersionTheme}-SNAPSHOT"
-def mavenVersionPlugin = "${gemVersionPlugin}-SNAPSHOT"
+def mavenVersionTheme = "${gemVersionTheme}"
+def mavenVersionPlugin = "${gemVersionPlugin}"
 def gemNameTheme = "unidata-jekyll-theme-${gemVersionTheme}.gem"
 def gemNamePlugin = "unidata-jekyll-plugins-${gemVersionPlugin}.gem"
 
