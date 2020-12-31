@@ -1,0 +1,9 @@
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    maven {
+      // For Unidata Gradle Plugins
+      url 'https://artifacts.unidata.ucar.edu/repository/unidata-all/'
+    }
+  }
+}

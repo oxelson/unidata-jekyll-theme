@@ -113,6 +113,13 @@ Unidata maintains a [gradle plugin](https://github.com/Unidata/unidata-jekyll-gr
 While useful for Java based projects, it is also useful to those want to build documentation sets without installing the full Ruby stack.
 The only requirement for using the gradle plugin is Java version 8 or greater.
 
+The gradle build in this project uses the `unidata-jekyll-gradle` plugin.
+However, if you would like to use the plugin to build and serve the files in this repo, you must make a few edits prior to running `./gradlew buildJekyllSite` or `./gradlew serveJekyllSite`.
+1. edit `_config.yml` and comment out the line setting the theme (that is, add a  `#` to the beginning of the line `theme: unidata-jekyll-theme`)
+1. move the file `Gemfile` to a temporary directory.
+
+Note that both of these changes **must** be undone before making pull requests with changes or publishing artifacts.
+
 ## Potentially useful utilities
 
 The `utilities/` directory contains some potentially useful scripts for generating tags and pdf docs.
