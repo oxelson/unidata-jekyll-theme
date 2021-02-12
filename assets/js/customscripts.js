@@ -3,7 +3,7 @@ $('#mysidebar').height($(".nav").height());
 // The updateVersionMenu function populates a "package Versions" menu defined in topnav.yml.
 // The function is called on $(document).ready() below.
 // DD 2020-04
-// SCA 2020-12-21
+// SCA 2021-02-12
 function updateVersionMenu() {
   // Get list of versions from a static JSON file. Usually this will live on the
   // docs.unidata.ucar.edu server, but during development it's a local file.
@@ -11,9 +11,9 @@ function updateVersionMenu() {
   var jsonFileSuffix = "_doc_versions.json";
   if (thisLoc=="docs.unidata.ucar.edu") {
     var packageName = window.location.pathname.split("/")[1]
-    var versionQuery = thisLoc + '/' + packageName + '/' + packageName + jsonFileSuffix;
+    var versionQuery = '../../' + packageName + jsonFileSuffix;
   } else if (thisLoc=="127.0.0.1" || thisLoc=="localhost") {
-    var versionQuery = thisLoc + '/files/' + jsonFileSuffix.substring(1);
+    var versionQuery = '/test' + jsonFileSuffix;
   } else {
     var versionQuery = '';
   }
