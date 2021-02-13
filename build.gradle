@@ -1,25 +1,22 @@
 plugins {
   id 'base'
   id 'maven-publish'
-  id 'edu.ucar.unidata.site.jekyll' version '0.0.1'
+  id 'edu.ucar.unidata.site.jekyll' version '0.0.2'
 }
 
-repositories {
-  jcenter()
-  mavenCentral()
-  repositories {
-    maven {
-      // For Unidata Gradle Plugins
-      url 'https://artifacts.unidata.ucar.edu/repository/unidata-all/'
-    }
-  }
-}
+// the version of the gem files - these do not use SNAPSHOT
+def gemVersionTheme = '0.0.1'
+def gemVersionPlugin = '0.0.1'
+
+// maven versions can be set to SNAPSHOT versions if needed
+def mavenVersionTheme = "${gemVersionTheme}"
+def mavenVersionPlugin = "${gemVersionPlugin}"
 
 // use gemjar without the unidata jekyll theme and plugin gems bundled in
 configurations.gemjar {
   resolutionStrategy.dependencySubstitution {
-    substitute(module('edu.ucar.unidata.site:jekyll-gems:0.0.1')).
-        using module('edu.ucar.unidata.site:jekyll-gems-minimum:0.0.1')
+    substitute(module("edu.ucar.unidata.site:jekyll-gems:${gemVersionTheme}")).
+        using module("edu.ucar.unidata.site:jekyll-gems-minimum:${gemVersionTheme}")
   }
 }
 
@@ -27,18 +24,13 @@ unidataJekyll {
   sourceDirectory = file('.')
 }
 
-
-def gemVersionTheme = '0.0.1'
-def gemVersionPlugin = '0.0.1'
-def mavenVersionTheme = "${gemVersionTheme}"
-def mavenVersionPlugin = "${gemVersionPlugin}"
 def gemNameTheme = "unidata-jekyll-theme-${gemVersionTheme}.gem"
 def gemNamePlugin = "unidata-jekyll-plugins-${gemVersionPlugin}.gem"
 
 tasks.named('wrapper') {
   distributionType = Wrapper.DistributionType.ALL
   // when upgrading, make sure we are using a compatible version of spock-core for testing.
-  gradleVersion = '6.7.1'
+  gradleVersion = '6.8.2'
 }
 
 ext {
