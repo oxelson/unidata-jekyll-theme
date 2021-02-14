@@ -1,5 +1,15 @@
 ## Topnav single links
 ## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+
+# Documentation version menu
+topnav_docvermenu:
+- title: Version
+  id: docmenu
+  folderitems:
+    - title: Menu Loading...
+      url:
+      id: remove
+
 topnav:
 - title: Topnav
   items:
