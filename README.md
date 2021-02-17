@@ -40,55 +40,90 @@ Edit away, and get your `git` on!
 
 ### Initial setup
 
-We will be publishing the gem file for our theme to the Unidata [artifacts server](https://artifacts.unidata.ucar.edu/#browse/browse:unidata-gems).
-In order to do this, you will need to install the nexus gem:
+We will be publishing the gem file for our theme to the Unidata [Nexus Repository Manager server](https://artifacts.unidata.ucar.edu/#browse/browse:unidata-gems).
+In order to do this, you will need to install the `nexus` gem:
 
 ~~~sh
 gem install nexus
 ~~~
 
-Next, you will need to increment the version of the gem to be published.
-Change the `spec.version` entry in `unidata-jekyll-theme.gemspec` (following [Semantic Versioning](https://semver.org/)).
+Next, you will need to increment the version(s) of the gem(s) to be published.
+This github repository manages the generation and publication of two Ruby gems, and each are versioned independently.
+A new release of the `unidata-jekyll-plugin` gem will be required any time a change is made to the files under the `_plugins/` directory.
+All other changes will require a new release of the `unidata-jekyll-theme` gem.
+If you need to make new releases for both gems, start by releasing the `unidata-jekyll-plugin`, as the `unidata-jekyll-theme` depends on it.
+The following steps apply for releasing both the `unidata-jekyll-theme` gem as well as the `unidata-jekyll-plugin` gem (with one noted exception).
+
+First, change the `spec.version` entry in `.gemspec` file (following [Semantic Versioning](https://semver.org/)).
+Note: if you are updating both gems, you will also need to update the `spec.add_runtime_dependency` entry in `unidata-jekyll-theme.gemspec` to account for the new plugin version.
+
 Next, build the gem file using:
 
 ~~~sh
-gem build unidata-jekyll-theme.gemspec
+gem build <gem-name>.gemspec
 ~~~
 
-This will create a gem file called `unidata-jekyll-theme-<version>.gem`.
-
-Finally, publish to the Unidata nexus gem repository using
+For example,
 
 ~~~sh
-gem nexus unidata-jekyll-theme-<version>.gem
+gem build unidata-jekyll-plugins.gemspec
+~~~
+
+This will create a gem file called `<gem-name>-<version>.gem` (e.g. `unidata-jekyll-plugins-0.0.2.gem`).
+
+Finally, publish the gem file to the Unidata nexus gem repository using
+
+~~~sh
+gem nexus <gem-name>-<version>.gem
+~~~
+
+For example,
+
+~~~sh
+gem nexus unidata-jekyll-plugins-0.0.2.gem
 ~~~
 
 The first time you run this command, the nexus gem will ask you for the url of the server you would like to publish to, as well as your credentials.
 The url you want to use is `https://artifacts.unidata.ucar.edu/repository/unidata-gems`.
 These are cached and reused in the future.
-If the plugins have been modified, you will need to use `gem build` and `gem nexus` to build and publish that GEM file as well.
 
 Since the theme is consumed by Java projects using `JRuby`, we also need to publish the gem files as Maven artifacts.
-This is done using `gradle`:
+This is done using `gradle`.
+The gradle build is configured to read the version of each gem from that gems' associated `gemspec` file.
+This means there are no configuration files to update when publishing the Maven artifact of the gem file.
+All that is needed is to run the appropriate task using gradle.
+
+If a new release of the `unidata-jekyll-plugins` artifact is needed, publish the corresponding maven artifact using:
+
+~~~sh
+./gradlew clean publishPlugin
+~~~
+
+If a new release of the `unidata-jekyll-theme` artifact is needed, use:
+
+~~~sh
+./gradlew clean publishTheme
+~~~
+
+If both artifacts have a new release, you can publish them both with one command:
 
 ~~~sh
 ./gradlew clean publish
 ~~~
 
-Both gem files must be created before running this command.
+Note that the gem files must be created using Ruby before publishing them as Maven artifacts.
 
-There is still quite a bit to document regarding the management of the theme and plugin.
-The full steps needed to publish everything looks something like the following:
+The full steps needed to publish everything will look something like the following:
 
 ~~~sh
-rm .\unidata-jekyll-plugins-0.0.1.gem
-rm .\unidata-jekyll-theme-0.0.1.gem
+rm .\unidata-jekyll-plugins-<old-version>.gem
+rm .\unidata-jekyll-theme-<old-version>.gem
 
 gem build .\unidata-jekyll-plugins.gemspec
-gem nexus .\unidata-jekyll-plugins-0.0.1.gem
+gem nexus .\unidata-jekyll-plugins-<new-version>.gem
 
 gem build .\unidata-jekyll-theme.gemspec
-gem nexus .\unidata-jekyll-theme-0.0.1.gem
+gem nexus .\unidata-jekyll-theme-<new-version>.gem
 
 ./gradlew clean publish
 ~~~
@@ -97,7 +132,7 @@ gem nexus .\unidata-jekyll-theme-0.0.1.gem
 
 ### Ruby
 
-Since the Unidata theme related gem files are hosted on our artifacts server, you will need to tell your Ruby installation that the artifacts server exists:
+Since the Unidata theme related gem files are hosted on our Nexus server, you will need to tell your Ruby installation that the Nexus server exists:
 
 ~~~sh
 gem sources --add https://artifacts.unidata.ucar.edu/repository/gems/
