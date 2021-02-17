@@ -4,19 +4,33 @@ plugins {
   id 'edu.ucar.unidata.site.jekyll' version '0.0.2'
 }
 
-// the version of the gem files - these do not use SNAPSHOT
-def gemVersionTheme = '0.0.1'
-def gemVersionPlugin = '0.0.1'
+def readVersionFromGemspec(String gemspec) {
+  def version
+  new File(gemspec).withReader('UTF-8') { reader ->
+    def line
+    while ((line = reader.readLine()) != null) {
+      if (line.contains('spec.version')) {
+        version = "${line.split('=').last() as String}".replace("\"", "").replace("'", "")
+        // remove single and double quotes
+        version = version.replace("\"", "")
+        version = version.replace("'", "")
+        version = version.trim()
+        break
+      }
+    }
+  }
+  version as String
+}
 
-// maven versions can be set to SNAPSHOT versions if needed
-def mavenVersionTheme = "${gemVersionTheme}"
-def mavenVersionPlugin = "${gemVersionPlugin}"
+// the version of the gem files - read these from the gemspec files.
+def themeVersion = readVersionFromGemspec('unidata-jekyll-theme.gemspec')
+def pluginVersion = readVersionFromGemspec('unidata-jekyll-plugins.gemspec')
 
 // use gemjar without the unidata jekyll theme and plugin gems bundled in
 configurations.gemjar {
   resolutionStrategy.dependencySubstitution {
-    substitute(module("edu.ucar.unidata.site:jekyll-gems:${gemVersionTheme}")).
-        using module("edu.ucar.unidata.site:jekyll-gems-minimum:${gemVersionTheme}")
+    substitute(module("edu.ucar.unidata.site:jekyll-gems:${themeVersion}")).
+        using module("edu.ucar.unidata.site:jekyll-gems-minimum:${themeVersion}")
   }
 }
 
@@ -24,8 +38,8 @@ unidataJekyll {
   sourceDirectory = file('.')
 }
 
-def gemNameTheme = "unidata-jekyll-theme-${gemVersionTheme}.gem"
-def gemNamePlugin = "unidata-jekyll-plugins-${gemVersionPlugin}.gem"
+def gemNameTheme = "unidata-jekyll-theme-${themeVersion}.gem"
+def gemNamePlugin = "unidata-jekyll-plugins-${pluginVersion}.gem"
 
 tasks.named('wrapper') {
   distributionType = Wrapper.DistributionType.ALL
@@ -62,16 +76,9 @@ def gemArtifactPlugin = artifacts.add('archives', gemFilePlugin) {
 
 publishing {
   repositories {
-    if (mavenVersionTheme.endsWith('SNAPSHOT')) {
-      maven {
-        name = 'snapshots'
-        url = 'https://artifacts.unidata.ucar.edu/repository/unidata-snapshots/'
-      }
-    } else {
-      maven {
-        name = 'releases'
-        url = 'https://artifacts.unidata.ucar.edu/repository/unidata-releases/'
-      }
+    maven {
+      name = 'releases'
+      url = 'https://artifacts.unidata.ucar.edu/repository/unidata-releases/'
     }
   }
 
@@ -79,19 +86,23 @@ publishing {
     themeGem(MavenPublication) {
       groupId = 'rubygems'
       artifactId = 'unidata-jekyll-theme'
-      version = "${mavenVersionTheme}"
+      version = "${themeVersion}"
 
       artifact gemArtifactTheme
     }
     pluginGem(MavenPublication) {
       groupId = 'rubygems'
       artifactId = 'unidata-jekyll-plugins'
-      version = "${mavenVersionPlugin}"
+      version = "${pluginVersion}"
 
       artifact gemArtifactPlugin
     }
   }
 }
+
+// short cut for publishing a single gem
+tasks.create('publishPlugin').dependsOn('publishPluginGemPublicationToReleasesRepository').group('publishing')
+tasks.create('publishTheme').dependsOn('publishThemeGemPublicationToReleasesRepository').group('publishing')
 
 // The "publish" tasks require credentials for our Nexus server, which they look for in Gradle properties.
 // If those properties (i.e. NEXUS_USERNAME_KEY and NEXUS_PASSWORD_KEY) haven't been provided, the build will fail.
