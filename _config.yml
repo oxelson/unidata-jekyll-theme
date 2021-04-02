@@ -20,12 +20,12 @@ site_topic: Site Topic
 company_name: Unidata
 
 # project logo (32x32), name, main landing page  (currently used in the footer)
-project_logo: https://www.unidata.ucar.edu/images/logos/uniLogo.png
+project_logo: https://docs.unidata.ucar.edu/images/logos/uniLogo.png
 project_name: Unidata Jekyll Theme
 project_landing_page: https://unidata.ucar.edu/
 
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
-github_editme_path: Unidata/unidata-jekyll-theme/blob/main/
+#github_editme_path: Unidata/unidata-jekyll-theme/blob/main/
 
 # if you have google-analytics ID, put it in. if not, edit this value to blank.
 # e.g. google_analytics: UA-92978945-1
@@ -124,6 +124,7 @@ sidebars:
 - product1_sidebar
 - product2_sidebar
 - other
+- unidata_sidebar
 
 # the description is used in the feed.xml file
 description: "Intended as a documentation theme based on Jekyll for use by Unidata projects."
@@ -131,4 +132,4 @@ description: "Intended as a documentation theme based on Jekyll for use by Unida
 # needed for sitemap.xml file only
 # base_docs_url: https://docs.unidata.ucar.edu/netcdf-java/
 
-github: [metadata]
+#github: [metadata]
