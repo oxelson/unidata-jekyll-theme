@@ -1,0 +1,77 @@
+entries:
+  - title:
+    folders:
+      - title:
+        output: pdf
+        type: frontmatter
+        folderitems:
+          - title:
+            url: /titlepage
+            output: pdf
+            type: frontmatter
+          - title:
+            url: /tocpage
+            output: pdf
+            type: frontmatter
+
+      - title: Getting Started
+        output: web, pdf
+        folderitems:
+          - title: Working on the theme
+            url: /index.html
+            output: web, pdf
+
+      - title: Markdown
+        output: web, pdf
+        folderitems:
+          - title: Overview
+            url: /overview.html
+            output: web, pdf
+          - title: Headings
+            url: /headings.html
+            output: web, pdf
+          - title: Links
+            url: /links.html
+            output: web, pdf
+          - title: Images
+            url: /images.html
+            output: web, pdf
+          - title: Files
+            url: /files.html
+            output: web, pdf
+          - title: Highlight Blocks
+            url: /highlight_blocks.html
+            output: web, pdf
+          - title: Indentation
+            url: /indentation.html
+            output: web, pdf
+      - title: Theme
+        output: web, pdf
+        folderitems:
+          - title: Upstream Theme Overview
+            url: /upstream_theme.html
+            output: web, pdf
+          - title: Front Matter
+            url: /front_matter.html
+            output: web, pdf
+          - title: Sidebars
+            url: /sidebars.html
+            output: web, pdf
+          - output: web, pdf
+            subfolders:
+              - title: Unidata Jekyll Plugins
+                output: web, pdf
+                subfolderitems:
+                - title: Sharing content between .md files
+                  url: /sharing_content.html
+                  output: web, pdf
+                - title: Include code snippets
+                  url: /code_snippets.html
+                  output: web, pdf
+
+      - title: Style
+        output: web, pdf
+        folderitems:
+          - title: Style guide
+            url: /style.html
+            output: web, pdf
