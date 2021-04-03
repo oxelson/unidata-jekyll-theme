@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build of the default unidata-jekyll-theme site
+    name: Build the default unidata-jekyll-theme site
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
