@@ -22,6 +22,32 @@ To live edit the theme in a browser, run:
 bundle exec jekyll serve
 ~~~
 
+You should see something similar to the following:
+
+~~~posh
+Configuration file: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_config.yml
+ Theme Config file: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_config.yml
+            Source: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme
+       Destination: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 3.96 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme'
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+~~~
+
+Note the `Server address` in the output - this is where you should point your browser to see a live view of the documentation.
+Each time a documentation file is edited and saved, Jekyll will regenerate the html file:
+
+~~~posh
+Regenerating: 1 file(s) changed at 2021-04-01 13:35:51
+              pages/unidata/DocGuide.md
+              ...done in 1.735274 seconds.
+~~~
+
 To build the static site, run:
 
 ~~~sh
@@ -154,9 +180,42 @@ However, if you would like to use the plugin to build and serve the files in thi
 1. move the file `Gemfile` to a temporary directory.
 
 Note that both of these changes **must** be undone before making pull requests with changes or publishing artifacts.
+Once changed, simply execute the following from the command line at the top level of the github repo:
+
+~~~bash
+./gradlew serveJekyllSite
+~~~
+
+Jekyll will start:
+
+~~~posh
+> Task :serveJekyllSite
+Configuration file: C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme/_config.yml
+            Source: C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme
+       Destination: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 16.19 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme'
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+<========-----> 66% EXECUTING [1m 5s]
+> :serveJekyllSite
+~~~
+
+Note the `Server address` in the output - this is where you should point your browser to see a live view of the documentation.
+Each time a documentation file is edited and saved, Jekyll will regenerate the html file:
+
+~~~bash
+Regenerating: 1 file(s) changed at 2021-04-01 13:43:40
+              pages/unidata/DocGuide.md
+              ...done in 8.897 seconds.
+~~~
 
 ## Potentially useful utilities
 
-The `utilities/` directory contains some potentially useful scripts for generating tags and pdf docs.
+The `utilities/` directory contains some potentially useful scripts from the upstream repository for generating tags and pdf docs.
 They were sort of cluttering up the main directory of the repo, so I moved them.
 

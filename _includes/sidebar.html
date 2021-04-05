@@ -1,7 +1,52 @@
 {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
 
 <ul id="mysidebar" class="nav">
-  <li class="sidebarTitle">{{sidebar[0].product}} {{sidebar[0].version}}</li>
+  <!-- figure out title for sidebar
+     sidebar[0].product -> sidebar[0].title -> site.site_title -> empty
+       (sidebar yaml)       (sidebar yaml)     (_config.yaml)
+    -->
+  {% if sidebar[0].product %}
+  {% assign sidebar_title = sidebar[0].product %}
+  {% elsif sidebar[0].title %}
+  {% assign sidebar_title = sidebar[0].title %}
+  {% elsif site.site_title %}
+  {% assign sidebar_title = site.site_title %}
+  {% else %}
+  {% assign sidebar_title = false %}
+  {% endif %}
+
+  <!-- figure out title for sidebar
+   sidebar[0].version -> site.docset_version -> empty
+     (sidebar yaml)        (_config.yaml)
+    -->
+  {% if sidebar[0].version %}
+  {% assign sidebar_version = sidebar[0].version %}
+  {% elsif site.docset_version %}
+  {% assign sidebar_version = site.docset_version %}
+  {% else %}
+  {% assign sidebar_version = false %}
+  {% endif %}
+
+  {% if sidebar[0].sidebar_url %}
+  {% assign sidebar_url = sidebar[0].sidebar_url %}
+  {% else %}
+  {% assign sidebar_url = "index.html" %}
+  {% endif %}
+
+  <!-- Both sidebar_title and sidebar_version defined -->
+  {% if sidebar_title and sidebar_version %}
+  <li class="sidebarTitle"><a href="{{sidebar_url}}">{{sidebar_title}} {{sidebar_version}}</a></li>
+  <!-- Only sidebar_title defined -->
+  {% elsif sidebar_title %}
+  <li class="sidebarTitle"><a href="{{sidebar_url}}">{{sidebar_title}}</a></li>
+  <!-- Only sidebar_version defined -->
+  {% elsif sidebar_version %}
+  <li class="sidebarTitle"><a href="{{sidebar_url}}">{{sidebar_version}}</a></li>
+  <!-- Untitled sidebar -->
+  {% else %}
+  <li class="sidebarTitle"><a href="{{sidebar_url}}">Untitled Sidebar</a></li>
+  {% endif %}
+
   {% for entry in sidebar %}
   {% for folder in entry.folders %}
   {% if folder.output contains "web" %}

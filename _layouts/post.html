@@ -24,7 +24,7 @@ layout: default
         {% if page.summary %}
         <div class="summary">{{page.summary}}</div>
         {% endif %}
-
+        {% include custom/breadcrumbs.html %}
         {{ content }}
     </div>
 
