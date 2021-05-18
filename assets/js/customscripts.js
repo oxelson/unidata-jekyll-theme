@@ -4,28 +4,49 @@ $('#mysidebar').height($(".nav").height());
 // The function is called on $(document).ready() below.
 // DD 2020-04
 // SCA 2021-02-12
+// SCA 2021-05-18
 function updateVersionMenu() {
   // Get list of versions from a static JSON file. Usually this will live on the
   // docs.unidata.ucar.edu server, but during development it's a local file.
-  var thisLoc = window.location.hostname;
-  var jsonFileSuffix = "_doc_versions.json";
-  if (thisLoc=="docs.unidata.ucar.edu") {
-    var packageName = window.location.pathname.split("/")[1]
-    var versionQuery = '../../' + packageName + jsonFileSuffix;
-  } else if (thisLoc=="127.0.0.1" || thisLoc=="localhost") {
-    var versionQuery = '/test' + jsonFileSuffix;
-  } else {
-    var versionQuery = '';
+  let thisLoc = window.location.hostname;
+  let localBuild = (thisLoc === "127.0.0.1" || thisLoc === "localhost");
+  let versionQuery = "";
+  let docsetName = "";
+  let packageName = "";
+  let pathSegments = window.location.pathname.split("/");
+  let versionInfoFile = "version-info.json";
+  if (!localBuild) {
+    let pathSegmentsLen = pathSegments.length;
+    if (pathSegmentsLen === 4) {
+      // path looks like /packageName/version/index.html
+      packageName = pathSegments[1]
+      versionQuery = ["", packageName, versionInfoFile].join("/");
+    } else if (pathSegmentsLen === 5) {
+      // path looks like /packageName/version/docsetName/index.html
+      // one exception:
+      // path looks like /thredds/packageName/version/index.html
+      if (pathSegments[1] === "thredds") {
+        packageName = pathSegments[2];
+        versionQuery = ["", pathSegments[1], packageName, versionInfoFile].join("/");
+      } else {
+        packageName = pathSegments[1];
+        docsetName = pathSegments[3];
+        versionQuery = ["", packageName, versionInfoFile].join("/");
+      }
+    } else {
+      console.error("URL structure not understood. Too many path segments in " + window.location.pathname);
+    }
+  } else if (localBuild) {
+    versionQuery = versionInfoFile;
   }
   // Get the version currently being displayed from an HTML meta tag.
-  var thisVersion = $('meta[name=doc_version]').attr("content");
+  let thisVersion = $('meta[name=doc_version]').attr("content");
   // Get the page currently being displayed, so we can go there in the selected doc set.
-  var thisPage = window.location.pathname;
+  let thisPage = window.location.pathname;
   thisPage = thisPage.substring(thisPage.lastIndexOf("/"));
 
   // Get version info from static JSON file
-  var request = $.ajax({
-    dataType: "json",
+  let request = $.ajax({
     dataType: "json",
     url: versionQuery,
     method: "GET",
@@ -38,17 +59,21 @@ function updateVersionMenu() {
 
     // Build menu entries
     $.each(data.releases, function(index, rel) {
-      var pVer = rel.version;
-      var pDoc = rel.docURL;
-      // docURL is a full path to the docset index file. Build path to current page instead.
-      pDoc = pDoc.substring(0, pDoc.lastIndexOf("/"));
-      pDoc = pDoc + ((typeof thisPage === 'string') ? thisPage : "/");
-      // Build the link
-      var menuURL = "<li><a href=\""+ pDoc +"\">" + " Version " + pVer + "</a></li>";
-      // Add menuURL to menu if json file says it's okay, and if it's not the current version.
-      if (parseInt(rel.include) && (thisVersion != rel.version)) {
-        $("#docmenu").append(menuURL);
-      }
+      let pVer = rel.version;
+      $.each(rel.docsets, function(index, docset) {
+        if (localBuild || (docsetName === index))  {
+          let pDoc = docset.baseUrl;
+          // docURL is a full path to the docset index file. Build path to current page instead.
+          pDoc = pDoc.substring(0, pDoc.lastIndexOf("/"));
+          pDoc = pDoc + ((typeof thisPage === 'string') ? thisPage : "/");
+          // Build the link
+          let menuURL = "<li><a href=\"" + pDoc + "\">" + " Version " + pVer + "</a></li>";
+          // Add menuURL to menu if json file says it's okay, and if it's not the current version.
+          if (parseInt(rel.include) && (thisVersion !== rel.version)) {
+            $("#docmenu").append(menuURL);
+          }
+        }
+      });
     });
   });
 
