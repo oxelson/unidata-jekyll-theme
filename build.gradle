@@ -1,7 +1,7 @@
 plugins {
   id 'base'
   id 'maven-publish'
-  id 'edu.ucar.unidata.site.jekyll' version '0.0.2'
+  id 'edu.ucar.unidata.site.jekyll' version '0.0.3'
 }
 
 def readVersionFromGemspec(String gemspec) {
