@@ -66,7 +66,7 @@ Edit away, and get your `git` on!
 
 ### Initial setup
 
-We will be publishing the gem file for our theme to the Unidata [Nexus Repository Manager server](https://artifacts.unidata.ucar.edu/#browse/browse:unidata-gems).
+We will be publishing the gem file for our theme to the Unidata [Nexus Repository Manager server](https://artifacts.unidata.ucar.edu/#browse/browse:gem-unidata).
 In order to do this, you will need to install the `nexus` gem:
 
 ~~~sh
@@ -110,7 +110,7 @@ gem nexus unidata-jekyll-plugins-0.0.2.gem
 ~~~
 
 The first time you run this command, the nexus gem will ask you for the url of the server you would like to publish to, as well as your credentials.
-The url you want to use is `https://artifacts.unidata.ucar.edu/repository/unidata-gems`.
+The url you want to use is `https://artifacts.unidata.ucar.edu/repository/gem-unidata`.
 These are cached and reused in the future.
 
 Since the theme is consumed by Java projects using `JRuby`, we also need to publish the gem files as Maven artifacts.
