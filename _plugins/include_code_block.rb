@@ -23,12 +23,14 @@ module Jekyll
     def render(context)
       # read file
       projdir = @projdir
-      dirIndex = Dir.pwd.rindex(/(?<=#{projdir}\/)/)
-      if dirIndex.nil?
-        projpath = Dir.pwd
-      else
-        projpath = Dir.pwd[0..dirIndex + projdir.length]
-      end
+
+      # finds last occurrence of '/projname' followed by '/' or end of string
+      # e.g. "/home/runner/work/unidata-jekyll-theme[/unidata-jekyll-theme/]"
+      # OR /home/runner/work/unidata-jekyll-theme[/unidata-jekyll-theme/]docs
+      # OR /home/runner/work/unidata-jekyll-theme[/unidata-jekyll-theme]
+      dirIndex = Dir.pwd.rindex(/\/#{projdir}(\/|$)/)
+      projpath = Dir.pwd[0..dirIndex+1 + projdir.length]
+
       filestring = File.read File.join projpath, @path
       codestring = filestring
 
