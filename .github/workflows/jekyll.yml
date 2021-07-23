@@ -1,14 +1,18 @@
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
-    name: Test the default unidata-jekyll-theme site
+    runs-on: ubuntu-latest
+    name: Build the default unidata-jekyll-theme site
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
           bundler-cache: true
@@ -19,10 +23,17 @@ jobs:
       - name: Build the default site
         run: |
           bundle exec jekyll clean
-          bundle exec jekyll build         
-      - uses: actions/upload-artifact@v2
-        if: success()
+          bundle exec jekyll build
+      - if: ${{ success() && github.event_name == 'pull_request' }}
         name: Upload a preview of the rendered html
+        uses: actions/upload-artifact@v2
         with:
           name: default_site_preview_${{ github.sha }}
           path: _site
+      - if: ${{ success() && github.event_name == 'push' }}
+        name: Publish Documentation to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          force_orphan: true

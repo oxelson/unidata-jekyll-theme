@@ -22,6 +22,32 @@ To live edit the theme in a browser, run:
 bundle exec jekyll serve
 ~~~
 
+You should see something similar to the following:
+
+~~~posh
+Configuration file: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_config.yml
+ Theme Config file: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_config.yml
+            Source: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme
+       Destination: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 3.96 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme'
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+~~~
+
+Note the `Server address` in the output - this is where you should point your browser to see a live view of the documentation.
+Each time a documentation file is edited and saved, Jekyll will regenerate the html file:
+
+~~~posh
+Regenerating: 1 file(s) changed at 2021-04-01 13:35:51
+              pages/unidata/DocGuide.md
+              ...done in 1.735274 seconds.
+~~~
+
 To build the static site, run:
 
 ~~~sh
@@ -40,55 +66,90 @@ Edit away, and get your `git` on!
 
 ### Initial setup
 
-We will be publishing the gem file for our theme to the Unidata [artifacts server](https://artifacts.unidata.ucar.edu/#browse/browse:unidata-gems).
-In order to do this, you will need to install the nexus gem:
+We will be publishing the gem file for our theme to the Unidata [Nexus Repository Manager server](https://artifacts.unidata.ucar.edu/#browse/browse:gem-unidata).
+In order to do this, you will need to install the `nexus` gem:
 
 ~~~sh
 gem install nexus
 ~~~
 
-Next, you will need to increment the version of the gem to be published.
-Change the `spec.version` entry in `unidata-jekyll-theme.gemspec` (following [Semantic Versioning](https://semver.org/)).
+Next, you will need to increment the version(s) of the gem(s) to be published.
+This github repository manages the generation and publication of two Ruby gems, and each are versioned independently.
+A new release of the `unidata-jekyll-plugin` gem will be required any time a change is made to the files under the `_plugins/` directory.
+All other changes will require a new release of the `unidata-jekyll-theme` gem.
+If you need to make new releases for both gems, start by releasing the `unidata-jekyll-plugin`, as the `unidata-jekyll-theme` depends on it.
+The following steps apply for releasing both the `unidata-jekyll-theme` gem as well as the `unidata-jekyll-plugin` gem (with one noted exception).
+
+First, change the `spec.version` entry in `.gemspec` file (following [Semantic Versioning](https://semver.org/)).
+Note: if you are updating both gems, you will also need to update the `spec.add_runtime_dependency` entry in `unidata-jekyll-theme.gemspec` to account for the new plugin version.
+
 Next, build the gem file using:
 
 ~~~sh
-gem build unidata-jekyll-theme.gemspec
+gem build <gem-name>.gemspec
 ~~~
 
-This will create a gem file called `unidata-jekyll-theme-<version>.gem`.
-
-Finally, publish to the Unidata nexus gem repository using
+For example,
 
 ~~~sh
-gem nexus unidata-jekyll-theme-<version>.gem
+gem build unidata-jekyll-plugins.gemspec
+~~~
+
+This will create a gem file called `<gem-name>-<version>.gem` (e.g. `unidata-jekyll-plugins-0.0.2.gem`).
+
+Finally, publish the gem file to the Unidata nexus gem repository using
+
+~~~sh
+gem nexus <gem-name>-<version>.gem
+~~~
+
+For example,
+
+~~~sh
+gem nexus unidata-jekyll-plugins-0.0.2.gem
 ~~~
 
 The first time you run this command, the nexus gem will ask you for the url of the server you would like to publish to, as well as your credentials.
-The url you want to use is `https://artifacts.unidata.ucar.edu/repository/unidata-gems`.
+The url you want to use is `https://artifacts.unidata.ucar.edu/repository/gem-unidata`.
 These are cached and reused in the future.
-If the plugins have been modified, you will need to use `gem build` and `gem nexus` to build and publish that GEM file as well.
 
 Since the theme is consumed by Java projects using `JRuby`, we also need to publish the gem files as Maven artifacts.
-This is done using `gradle`:
+This is done using `gradle`.
+The gradle build is configured to read the version of each gem from that gems' associated `gemspec` file.
+This means there are no configuration files to update when publishing the Maven artifact of the gem file.
+All that is needed is to run the appropriate task using gradle.
+
+If a new release of the `unidata-jekyll-plugins` artifact is needed, publish the corresponding maven artifact using:
+
+~~~sh
+./gradlew clean publishPlugin
+~~~
+
+If a new release of the `unidata-jekyll-theme` artifact is needed, use:
+
+~~~sh
+./gradlew clean publishTheme
+~~~
+
+If both artifacts have a new release, you can publish them both with one command:
 
 ~~~sh
 ./gradlew clean publish
 ~~~
 
-Both gem files must be created before running this command.
+Note that the gem files must be created using Ruby before publishing them as Maven artifacts.
 
-There is still quite a bit to document regarding the management of the theme and plugin.
-The full steps needed to publish everything looks something like the following:
+The full steps needed to publish everything will look something like the following:
 
 ~~~sh
-rm .\unidata-jekyll-plugins-0.0.1.gem
-rm .\unidata-jekyll-theme-0.0.1.gem
+rm .\unidata-jekyll-plugins-<old-version>.gem
+rm .\unidata-jekyll-theme-<old-version>.gem
 
 gem build .\unidata-jekyll-plugins.gemspec
-gem nexus .\unidata-jekyll-plugins-0.0.1.gem
+gem nexus .\unidata-jekyll-plugins-<new-version>.gem
 
 gem build .\unidata-jekyll-theme.gemspec
-gem nexus .\unidata-jekyll-theme-0.0.1.gem
+gem nexus .\unidata-jekyll-theme-<new-version>.gem
 
 ./gradlew clean publish
 ~~~
@@ -97,7 +158,7 @@ gem nexus .\unidata-jekyll-theme-0.0.1.gem
 
 ### Ruby
 
-Since the Unidata theme related gem files are hosted on our artifacts server, you will need to tell your Ruby installation that the artifacts server exists:
+Since the Unidata theme related gem files are hosted on our Nexus server, you will need to tell your Ruby installation that the Nexus server exists:
 
 ~~~sh
 gem sources --add https://artifacts.unidata.ucar.edu/repository/gems/
@@ -119,9 +180,42 @@ However, if you would like to use the plugin to build and serve the files in thi
 1. move the file `Gemfile` to a temporary directory.
 
 Note that both of these changes **must** be undone before making pull requests with changes or publishing artifacts.
+Once changed, simply execute the following from the command line at the top level of the github repo:
+
+~~~bash
+./gradlew serveJekyllSite
+~~~
+
+Jekyll will start:
+
+~~~posh
+> Task :serveJekyllSite
+Configuration file: C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme/_config.yml
+            Source: C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme
+       Destination: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 16.19 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme'
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+<========-----> 66% EXECUTING [1m 5s]
+> :serveJekyllSite
+~~~
+
+Note the `Server address` in the output - this is where you should point your browser to see a live view of the documentation.
+Each time a documentation file is edited and saved, Jekyll will regenerate the html file:
+
+~~~bash
+Regenerating: 1 file(s) changed at 2021-04-01 13:43:40
+              pages/unidata/DocGuide.md
+              ...done in 8.897 seconds.
+~~~
 
 ## Potentially useful utilities
 
-The `utilities/` directory contains some potentially useful scripts for generating tags and pdf docs.
+The `utilities/` directory contains some potentially useful scripts from the upstream repository for generating tags and pdf docs.
 They were sort of cluttering up the main directory of the repo, so I moved them.
 

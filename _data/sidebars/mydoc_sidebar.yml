@@ -2,6 +2,7 @@
 
 entries:
 - title: sidebar
+  sidebar_url: upstream_index.html
   product: Jekyll Doc Theme
   version: 6.0
   folders:
@@ -24,7 +25,7 @@ entries:
     folderitems:
 
     - title: Get started
-      url: /index.html
+      url: /upstream_index.html
       output: web, pdf
       type: homepage
 

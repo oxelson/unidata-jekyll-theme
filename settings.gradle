@@ -1,9 +1,16 @@
 pluginManagement {
   repositories {
     gradlePluginPortal()
-    maven {
-      // For Unidata Gradle Plugins
-      url 'https://artifacts.unidata.ucar.edu/repository/unidata-all/'
+    // only get the unidata jekyll plugin from the unidata repository
+    exclusiveContent {
+      forRepository {
+        maven {
+          url "https://artifacts.unidata.ucar.edu/repository/unidata-all/"
+        }
+      }
+      filter {
+        includeModule 'edu.ucar.unidata.site.jekyll', 'edu.ucar.unidata.site.jekyll.gradle.plugin'
+      }
     }
   }
 }
