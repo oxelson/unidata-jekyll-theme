@@ -80,20 +80,30 @@
   <div class="container">
     <div id="main">
       <!-- Content Row -->
-      <div class="row">
+      <div class="row" id="content">
         {% assign content_col_size = "col-md-12" %}
         {% unless page.hide_sidebar %}
         <!-- Sidebar Column -->
         <div class="col-md-3" id="tg-sb-sidebar">
           {% include sidebar.html %}
         </div>
+
+        {% if page.toc == false %}
         {% assign content_col_size = "col-md-9" %}
+        {% else %}
+        {% assign content_col_size = "col-md-6" %}
+        {% endif %}
         {% endunless %}
 
         <!-- Content Column -->
         <div class="{{content_col_size}}" id="tg-sb-content">
           {{content}}
         </div>
+        {% unless page.toc == false %}
+        <div class="col-md-3" id="tg-sb-sidebar-toc">
+          {% include toc.html %}
+        </div>
+        {% endunless %}
         <!-- /.row -->
       </div>
       <div class="row" id="footer">
