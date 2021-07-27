@@ -180,6 +180,25 @@ div#toc ul li ul li::before {
     color: #7f8794;
 }
 
+/* top-nav nested dropdown menu */
+.subdd::after {
+    content: " \0020 \25B8"
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.nav ul li ul li.submenuitem a {
+    padding-left: 10px;
+}
+
 /* page layout */
 .container {
     max-width:100%;

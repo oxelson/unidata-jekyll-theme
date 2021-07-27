@@ -116,6 +116,25 @@ $( document ).ready(function() {
   anchors.add('h2,h3,h4,h5');
 
   updateVersionMenu();
+
+  // Top (horizontal) nav submenus for spawning subnav
+  $('.dropdown-submenu a.subdd').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
+  // Top (horizontal) nav submenus even listener for actual link execution
+  $('.dropdown-submenu .submenuitem a').on("click", function(e){
+    let link = $(this).attr("href");
+    let target = $(this).attr("target");
+    if (target !== undefined && target === "_blank") {
+      window.open(link, "_blank");
+    } else {
+      window.open(link);
+    }
+    return false;
+  });
 });
 
 // IT ADDS PARENT CATEGORY TABS INTO BREADCRUMBS.
