@@ -4,9 +4,12 @@
     font-size:16px;
 }
 
-
 h1, h2, h3, h4, h5 {
   color: #034250;
+}
+
+p {
+    margin-top: 20px;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -127,30 +130,43 @@ li.sidebarTitle {
     font-weight: bold;
 }
 
+.bcEnd::before {
+    content: " \2192\0020 "
+}
+
 /* table of contents */
 div#toc {
-    border-left: 4px solid #DCDCDC;
-    margin-bottom: 30px;
+    position: fixed;
+    top: 100px;
+    margin-top: 40px;
+    background: #FFFFFF;
+}
+
+div#toc.fa-list-ul {
+    color: #666666;
+}
+div#toc>ul::before {
+    font-size:130%;
+    content: 'On This Page: ';
+    padding: 0 0 0 20px !important;
+    position: relative;
+    top: -18px;
+    color: #8D8D8D;
 }
 
 div#toc ul {
     background: none;
-    margin-left: 5px;
+    margin: 0 0 0 5px;
+    padding: 0;
     border-radius: 0;
-}
-
-
-div#toc>ul::before {
-    content: "On This Page:";
-    padding-left: 0;
+    /* Need the font-family here to negate the font style of the fa-list-ul class. */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:100%;
 }
 
 div#toc ul li {
     font-size: 100% !important;
     list-style: disc;
-    list-style-position: initial;
-    list-style-image: initial;
-    list-style-type: disc;
 }
 
 div#toc ul li ul li::before {
@@ -163,3 +179,21 @@ div#toc ul li ul li::before {
     border-color: #bec3d6;
     color: #7f8794;
 }
+
+/* page layout */
+.container {
+    max-width:100%;
+}
+
+#content {
+    border-bottom: 4px solid #DCDCDC;
+}
+#footer {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1000px;
+}
+
+
