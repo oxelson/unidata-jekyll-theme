@@ -1,15 +1,19 @@
 ---
-title: Sidebars
+title: Left Sidebars
 last_updated: 2021-04-02
 toc: false
 sidebar: unidata_sidebar
 permalink: sidebars.html
 ---
 
+## Left Sidebars (Main Navigation)
+
+### Location
 Sidebar are defined using `YAML` files stored in `_data/sidebars/`.
 For example, the sidebar used for this page is `_data/sidebars/unidata_sidebar.yml`.
 If you add a new sidebar, you will need to make sure to add it to the `_config.yml` file at the top level of the docs directory.
 
+### Syntax
 The Sidebar will be assigned a title based on the following, if defined (in order of precedence):
 * The value of the `product` key associated with the first `title` key under `entries` in the sidebar yaml file
 * The value of the first `title` key under `entries` in the sidebar yaml file
@@ -36,3 +40,6 @@ entries:
   ...
 ~~~
 
+## Right Sidebars (In-Page Navigation)
+
+Right sidebars, used for in-page navigation, can be enbled via the [Table Of Contents](toc.html).

@@ -57,7 +57,9 @@ entries:
           - title: Sidebars
             url: /sidebars.html
             output: web, pdf
-          - output: web, pdf
+          - title: Table Of Contents
+            url: /toc.html
+            output: web, pdf
             subfolders:
               - title: Unidata Jekyll Plugins
                 output: web, pdf
