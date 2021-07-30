@@ -5,6 +5,9 @@ $('#mysidebar').height($(".nav").height());
 // DD 2020-04
 // SCA 2021-02-12
 // SCA 2021-05-18
+// JO  2021-07-30 --> jQuery XMLHttpRequest (jqXHR) object Promise methods:
+// success --> done & error --> fail
+// (success & error deprecated as of jQuery 3.0: https://api.jquery.com/jQuery.ajax/)
 function updateVersionMenu() {
   // Get list of versions from a static JSON file. Usually this will live on the
   // docs.unidata.ucar.edu server, but during development it's a local file.
@@ -53,7 +56,7 @@ function updateVersionMenu() {
     async: true
   });
 
-  request.success(function(data) {
+  request.done(function(data) {
     // Remove menu placeholder
     $("li#remove").remove();
 
@@ -77,7 +80,7 @@ function updateVersionMenu() {
     });
   });
 
-  request.error(function(data) {
+  request.fail(function(data) {
     // Remove menu placeholder
     $("li#remove").remove();
     // Insert an error indicator. Maybe this should link somewhere?
@@ -117,24 +120,24 @@ $( document ).ready(function() {
 
   updateVersionMenu();
 
+  /**
+   * Top Nav Dropdown subnav menus
+   */
   // Top (horizontal) nav submenus for spawning subnav
-  $('.dropdown-submenu a.subdd').on("click", function(e){
+  $('a.subdd').on("click", function(e){
+    $('.dropdown-submenu').hide();
     $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
   });
 
-  // Top (horizontal) nav submenus even listener for actual link execution
-  $('.dropdown-submenu .submenuitem a').on("click", function(e){
-    let link = $(this).attr("href");
-    let target = $(this).attr("target");
-    if (target !== undefined && target === "_blank") {
-      window.open(link, "_blank");
-    } else {
-      window.open(link);
+
+  $('a.dropdown-toggle').on("click", function(e){
+    if (!$('.dropdown-menu .parent').is(':visible')) {
+      $(".dropdown-submenu").hide();
     }
-    return false;
   });
+
+
+
 });
 
 // IT ADDS PARENT CATEGORY TABS INTO BREADCRUMBS.
@@ -166,7 +169,7 @@ $(function() {
   json = JSON.parse(tabsState || "{}");
 
   $.each(json, function(containerId, href) {
-    return $("#" + containerId + " a[href=" + href + "]").tab('show');
+    return $("#" + containerId + " a[href=\"" + href + "\"]").tab('show');
   });
 
   $("ul.nav.nav-pills, ul.nav.nav-tabs").each(function() {
