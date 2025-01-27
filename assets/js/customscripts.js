@@ -53,7 +53,7 @@ function updateVersionMenu() {
     async: true
   });
 
-  request.success(function(data) {
+  request.done(function(data) {
     // Remove menu placeholder
     $("li#remove").remove();
 
@@ -77,7 +77,7 @@ function updateVersionMenu() {
     });
   });
 
-  request.error(function(data) {
+  request.fail(function(data) {
     // Remove menu placeholder
     $("li#remove").remove();
     // Insert an error indicator. Maybe this should link somewhere?
