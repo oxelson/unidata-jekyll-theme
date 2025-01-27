@@ -14,5 +14,5 @@ Gem::Specification.new do |spec|
     spec.files       = all_files.grep(%r!^(_plugins)/!)
     spec.require_paths = ["_plugins"]
 
-    spec.add_runtime_dependency "jekyll", ">= 3.8", "< 4.2"
+    spec.add_runtime_dependency "jekyll"
   end
