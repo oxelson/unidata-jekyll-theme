@@ -113,47 +113,6 @@ The first time you run this command, the nexus gem will ask you for the url of t
 The url you want to use is `https://artifacts.unidata.ucar.edu/repository/gem-unidata`.
 These are cached and reused in the future.
 
-Since the theme is consumed by Java projects using `JRuby`, we also need to publish the gem files as Maven artifacts.
-This is done using `gradle`.
-The gradle build is configured to read the version of each gem from that gems' associated `gemspec` file.
-This means there are no configuration files to update when publishing the Maven artifact of the gem file.
-All that is needed is to run the appropriate task using gradle.
-
-If a new release of the `unidata-jekyll-plugins` artifact is needed, publish the corresponding maven artifact using:
-
-~~~sh
-./gradlew clean publishPlugin
-~~~
-
-If a new release of the `unidata-jekyll-theme` artifact is needed, use:
-
-~~~sh
-./gradlew clean publishTheme
-~~~
-
-If both artifacts have a new release, you can publish them both with one command:
-
-~~~sh
-./gradlew clean publish
-~~~
-
-Note that the gem files must be created using Ruby before publishing them as Maven artifacts.
-
-The full steps needed to publish everything will look something like the following:
-
-~~~sh
-rm .\unidata-jekyll-plugins-<old-version>.gem
-rm .\unidata-jekyll-theme-<old-version>.gem
-
-gem build .\unidata-jekyll-plugins.gemspec
-gem nexus .\unidata-jekyll-plugins-<new-version>.gem
-
-gem build .\unidata-jekyll-theme.gemspec
-gem nexus .\unidata-jekyll-theme-<new-version>.gem
-
-./gradlew clean publish
-~~~
-
 ## Using the gem-based theme in your own documentation
 
 ### Ruby
@@ -167,52 +126,6 @@ gem sources --add https://artifacts.unidata.ucar.edu/repository/gems/
 Once you have done this, you can generally follow the jekyll documentation regarding the installation and use of a [gem based theme](https://jekyllrb.com/docs/themes/#installing-a-theme).
 You will also need to make sure you include the `unidata-jekyll-plugin` gem.
 As this theme progresses, we will add more details about Unidata specific extensions to the theme, but for now, consider this a work in progress :-)
-
-### Java
-
-Unidata maintains a [gradle plugin](https://github.com/Unidata/unidata-jekyll-gradle) that utilizes JRuby to run Jekyll to build Jekyll sites using the Unidata theme maintained in this repository.
-While useful for Java based projects, it is also useful to those want to build documentation sets without installing the full Ruby stack.
-The only requirement for using the gradle plugin is Java version 8 or greater.
-
-The gradle build in this project uses the `unidata-jekyll-gradle` plugin.
-However, if you would like to use the plugin to build and serve the files in this repo, you must make a few edits prior to running `./gradlew buildJekyllSite` or `./gradlew serveJekyllSite`.
-1. edit `_config.yml` and comment out the line setting the theme (that is, add a  `#` to the beginning of the line `theme: unidata-jekyll-theme`)
-1. move the file `Gemfile` to a temporary directory.
-
-Note that both of these changes **must** be undone before making pull requests with changes or publishing artifacts.
-Once changed, simply execute the following from the command line at the top level of the github repo:
-
-~~~bash
-./gradlew serveJekyllSite
-~~~
-
-Jekyll will start:
-
-~~~posh
-> Task :serveJekyllSite
-Configuration file: C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme/_config.yml
-            Source: C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme
-       Destination: C:/Users/sarms/dev/unidata/repos/unidata-jekyll-theme/_site
- Incremental build: disabled. Enable with --incremental
-      Generating...
-                    done in 16.19 seconds.
-  Please add the following to your Gemfile to avoid polling for changes:
-    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
- Auto-regeneration: enabled for 'C:\Users\sarms\dev\unidata\repos\unidata-jekyll-theme'
-    Server address: http://127.0.0.1:4000
-  Server running... press ctrl-c to stop.
-<========-----> 66% EXECUTING [1m 5s]
-> :serveJekyllSite
-~~~
-
-Note the `Server address` in the output - this is where you should point your browser to see a live view of the documentation.
-Each time a documentation file is edited and saved, Jekyll will regenerate the html file:
-
-~~~bash
-Regenerating: 1 file(s) changed at 2021-04-01 13:43:40
-              pages/unidata/DocGuide.md
-              ...done in 8.897 seconds.
-~~~
 
 ## Potentially useful utilities
 

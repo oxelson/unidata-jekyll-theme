@@ -10,7 +10,3 @@ vendor/
 *.gem
 .jekyll-cache
 Gemfile.lock
-
-# gradle stuff
-.gradle/
-build/
