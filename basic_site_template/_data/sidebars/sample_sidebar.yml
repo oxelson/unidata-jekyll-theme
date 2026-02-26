@@ -1,0 +1,30 @@
+entries:
+  - title:
+    folders:
+      - title:
+        output: pdf
+        type: frontmatter
+        folderitems:
+          - title:
+            url: /titlepage
+            output: pdf
+            type: frontmatter
+          - title:
+            url: /tocpage
+            output: pdf
+            type: frontmatter
+
+      - title: Welcome
+        output: web, pdf
+        folderitems:
+          - title: Landing Page
+            url: /index.html
+            output: web, pdf
+
+      - title: New Group
+        output: web, pdf
+        folderitems:
+          - title: Sample page
+            url: /sample_page.html
+            output: web, pdf
+

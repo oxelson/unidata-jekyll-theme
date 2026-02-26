@@ -1,0 +1,64 @@
+# set the theme
+theme: unidata-jekyll-theme
+
+# this will appear in an HTML meta tag, sidebar, and perhaps elsewhere
+docset_version: major.minor
+
+# this appears on the top navigation bar next to the home button
+topnav_title: Topnav Title
+
+# this appears in the html browser tab for the site title (seen mostly by search engines, not users)
+site_title: Site Title
+
+# this appears in the footer
+site_topic: Site Topic
+
+# project logo (32x32), name, main landing page  (currently used in the footer)
+project_logo: https://assets.unidata.ucar.edu/images/logos/uniLogo.png
+project_name: Minimal site using the Unidata Jekyll Theme
+project_landing_page: https://unidata.ucar.edu/
+
+# the preview server used. Leave as is.
+host: 127.0.0.1
+
+# the port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
+port: 4000
+
+# these are the files and directories that jekyll will exclude from the build
+exclude:
+  - build/
+  - "Gemfile.*"
+  - .gitignore
+  - README.md
+
+# used as a contact email and subject line for the Feedback link in the top navigation bar
+feedback_subject_line: Documentation Feedback
+feedback_email: plaza@unidata.ucar.edu
+
+# library used for syntax highlighting
+highlighter: rouge
+
+# filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
+markdown: kramdown
+kramdown:
+ input: GFM
+ auto_ids: true
+ hard_wrap: false
+ syntax_highlighter: rouge
+
+# these are defaults used for the frontmatter for these file types
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: false
+      sidebar: sample_sidebar
+
+sidebars:
+- sample_sidebar
+
+# the description is used in the feed.xml file
+description: "Intended as a documentation theme based on Jekyll for use by Unidata projects."
