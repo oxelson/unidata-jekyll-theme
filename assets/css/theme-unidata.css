@@ -4,9 +4,9 @@
     font-size:16px;
 }
 
-h1, h2, h3, h4, h5 {
+/* h1, h2, h3, h4, h5 {
   color: #034250;
-}
+} */
 
 p {
     margin-top: 20px;
@@ -110,11 +110,13 @@ li.sidebarTitle {
 .nav .sidebarTitle a:active,
 .nav .sidebarTitle a:hover,
 .nav .sidebarTitle a:focus {
-    background-color: #FFFFFF;
-    color: #034250 !important;
-    font-size:120%;
+    background-color: transparent;
+    color: var(--uu-heading-color);
+    font-family: var(--uu-heading-font-family);
+    letter-spacing: -2%;
+    font-size: 1em;
     padding: 0;
-    margin:0 0 20px 0;
+    margin:0 0 1em 0;
 }
 
 /* left-floated version menu */ /* DD 2020_04 */

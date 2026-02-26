@@ -1,8 +1,20 @@
 @import "fonts.css";
 @import "footer.css";
+@import "unidata-unity.css";
 
 body {
-  font-size:15px;
+  font-size: 1.5em;
+  line-height: 1.7em;
+  font-family: var(--uu-text-font-family);
+  background-color: var(--uu-body-background-color);
+  background-image: var(--uu-body-background-image);
+  /* background-position: 150% 0%; */
+  background-repeat: repeat-y;
+  background-size: 25%;
+}
+
+code, pre {
+  font-family: var(--uu-mono-font-family);
 }
 
 .bs-callout {
@@ -84,6 +96,22 @@ h6[id],
 dt[id]{
   padding-top: 60px;
   margin-top: -40px
+}
+
+/* heading styles DD 2026*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--uu-heading-font-family);
+    color: var(--uu-heading-color);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    letter-spacing: -2%;
 }
 
 body h1 {
@@ -444,7 +472,7 @@ ul#mysidebar {
 }
 
 span.projectTitle {
-  font-family: Helvetica;
+  font-family: var(--uu-heading-font-family);
   font-weight: bold;
 }
 
@@ -613,8 +641,8 @@ a.fa.fa-envelope-o.mailto {
   font-weight: 600;
 }
 
-h3 {color: #ED1951; font-weight:normal; font-size:130%;}
-h4 {color: #808080; font-weight:normal; font-size:120%; font-style:italic;}
+/* h3 {color: #ED1951; font-weight:normal; font-size:130%;}
+h4 {color: #808080; font-weight:normal; font-size:120%; font-style:italic;} */
 
 .alert, .callout {
   overflow: hidden;
@@ -684,10 +712,10 @@ button.cursorNorm {
   cursor: pointer;
 }
 
-h2  {
+/* h2  {
   font-size:24px;
   line-height:29px;
-}
+} */
 span.otherProgrammingLanguages {
   font-style: normal;
 }
@@ -717,7 +745,7 @@ ol.series li {
   font-size: 200%;
   font-weight: bold;
   color: silver;
-  font-family: monospace;
+  font-family: var(--uu-mono-font-family);
   text-align: center;
   line-height: 10px;
   margin: 20px 0px;
@@ -727,7 +755,7 @@ ol.series li {
 .versionTagline {
   text-align: center;
   margin-bottom: 20px;
-  font-family: courier;
+  font-family: var(--uu-text-mono-family);
   font-color: silver;
   color: #444;
   display:block;
@@ -838,7 +866,7 @@ a.accordion-toggle {
 
 span.red {
   color: red;
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: var(--uu-mono-font-family);
 }
 
 h3.codeExplanation {
@@ -859,14 +887,14 @@ span.soft {
 .endpoint {
   padding: 15px;
   background-color: #f0f0f0;
-  font-family: courier;
+  font-family: var(--uu-mono-font-family);
   font-size: 110%;
   margin: 20px 0px;
   color: #444;
 }
 
 .parameter {
-  font-family: courier;
+  font-family: var(--uu-mono-font-family);
   color: red !important;
 }
 
@@ -1078,7 +1106,7 @@ table thead th code.highlighter-rouge {
   width: 100px;
   height: 80px;
   background-color: #f5f5f5;
-  font-family: Arial;
+  font-family: var(--uu-text-font-family);
   font-size: 12px;
   hyphens: auto;
   float: left;
@@ -1103,7 +1131,7 @@ table thead th code.highlighter-rouge {
 }
 
 h2.userMapTitle {
-  font-family: Arial;
+  font-family: var(--uu-text-font-family);
 }
 
 #userMap a:hover {

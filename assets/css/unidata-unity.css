@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/*!
+ * UCAR/Unity theme styling brought forward to Unidata Jekyll sites
+ */
+:root {
+  --uu-body-text-color: rgb(1, 24, 55) ;
+  --uu-body-background-color: rgb(246, 247, 246) ;
+  --uu-body-background-image: url("https://www.unidata.ucar.edu/profiles/composer/unity-profile/themes/unity/img/UCAR-Waves-Lines-Only.png");
+  --uu-heading-color: #00357a;
+  --uu-mono-font-family: Roboto Mono, monospace;
+  --uu-text-font-family: Inter, Poppins, sans-serif;
+  --uu-heading-font-family: Poppins, sans-serif;
+}
