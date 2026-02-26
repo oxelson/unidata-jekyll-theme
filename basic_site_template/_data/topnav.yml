@@ -1,0 +1,30 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+
+# Documentation version menu
+topnav_docvermenu:
+- title: Version
+  id: docmenu
+  folderitems:
+    - title: Menu Loading...
+      url:
+      id: remove
+
+topnav:
+- title: Topnav
+  items:
+    - title: Unidata Documentation Theme Info
+      external_url: https://unidata.github.io/unidata-jekyll-theme/
+    - title: GitHub
+      external_url: https://github.com/unidata/unidata-jekyll-theme
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: Example Sites
+      folderitems:
+        - title: netcdf-Java
+          external_url: https://docs.unidata.ucar.edu/netcdf-java/current/userguide/
+        - title: THREDDS Data Server
+          external_url: https://docs.unidata.ucar.edu/tds/current/userguide/
