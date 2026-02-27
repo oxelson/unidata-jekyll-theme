@@ -11,3 +11,4 @@ permalink: sample_page.html
 Another page.
 w00t w00t.
 
+Here is a link to take you back to the [main page](index.html).
