@@ -11,3 +11,5 @@ permalink: index.html
 It's a landing page, woohoo!
 
 {% include image.html file="sl_website-under-construction.jpeg" alt="alt text" caption="" %}
+
+Here is a link to [another page](sample_page.html) in the documentation.

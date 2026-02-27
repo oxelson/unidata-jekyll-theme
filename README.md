@@ -8,7 +8,7 @@ This is a fork of the excellent [documentation-theme-jekyll](https://idratherbew
 There are two ways to generate jekyll-based documentation using the unidata-jekyll-theme.
 The first is using a local Ruby installation, and the second is using Docker.
 Both require a minimum set of files to bootstrap the jekyll site.
-A minimal set of files is provided in the `basic_site_template/` directory.
+A minimal set of files with quickstart documentation is provided in the [basic_site_template/](basic_site_template#readme) directory.
 Once you have those files, pick one of the two methods below to start generating documentation.
 For information on how to configure and write documentation using the unidata theme and unidata plugin, please visit the [documentation](https://unidata.github.io/unidata-jekyll-theme/).
 
