@@ -15,7 +15,7 @@ To get started with this site template, follow these steps:
 
 Documentation pages are written in Markdown and are stored in the `pages/` directory.
 Each Markdown file contains a front matter block that controls important page settings.
-For exmaple, the main page of this example site is `pages/main_page.md`.
+For example, the main page of this basic site is `pages/main_page.md`.
 The front matter block looks like this:
 
 ~~~md
