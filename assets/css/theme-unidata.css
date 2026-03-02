@@ -12,17 +12,32 @@ p {
     margin-top: 20px;
 }
 
+a {
+  color: var(--uu-link-color);
+}
+a:hover {
+  color: var(--uu-link-hover-color);
+}
+
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     background-color: #06778F; /* was #248ec2 */
     color: white;
 }
 
 .nav > li.active > a {
-    background-color: #034250; /* was #347DBE */
+    background-color: var(--uu-header-background-color); /* #034250; /* was #347DBE */
 }
 
-.nav > li > a:hover {
-    background-color: #06778F; /* was #248ec2 */
+
+/* .nav > li > a:hover { */
+.nav li a:hover {
+    background-color: var(--uu-link-hover-color); /* #06778F; /* was #248ec2 */
+}
+
+.nav a:hover, .nav li.active > a {
+  background-color: #8D8D8D;
+  background-color: var(--uu-header-background-color);
+  color: #f5f5f5;
 }
 
 div.navbar-collapse .dropdown-menu > li > a:hover {
@@ -47,8 +62,8 @@ a[data-toggle="tooltip"] {
 }
 
 .navbar-inverse {
-    background-color: #06778F;
-    border-color: #034250;
+    background-color: var(--uu-header-background-color); /* #06778F; */
+    border-color: var(--uu-heading-color); /* #034250; */
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
@@ -72,7 +87,7 @@ a[data-toggle="tooltip"] {
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #034250; /* was #347DBE */
+    background-color: var(--uu-link-hover-color); /* #034250; /* was #347DBE */
 }
 
 .btn-primary:hover,
@@ -187,8 +202,8 @@ div#toc ul li ul li::before {
     color: #7f8794;
 }
 
-#content {
+/* #content {
     border-bottom: 4px solid #DCDCDC;
-}
+} */
 
 
