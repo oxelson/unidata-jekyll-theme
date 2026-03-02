@@ -36,15 +36,15 @@
 
   /* Unidata Unity colors */
   --uu-heading-color: #00357a;
-  --uu-header-background-color: hsl(from var(--uu-heading-color) h s 30%);
+  --uu-header-background-color: hsl(from var(--uu-heading-color) h 40% 40%);
+  --uu-footer-background-color: #323133;
   --uu-body-text-color: var(--bs-body-color);
   --uu-body-background-color: var(--bs-body-bg) ;
   --uu-body-background-image: url("https://www.unidata.ucar.edu/profiles/composer/unity-profile/themes/unity/img/UCAR-Waves-Lines-Only.png");
-
   --uu-link-color: hsl(from var(--uu-heading-color) h s 30%);
   --uu-link-hover-color: hsl(from var(--uu-link-color) h 70% 70%);
   --uu-mono-font-family: Roboto Mono, monospace;
   --uu-text-font-family: Inter, Poppins, sans-serif;
   --uu-heading-font-family: Poppins, sans-serif;
 }
-}
+

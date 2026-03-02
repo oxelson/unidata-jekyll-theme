@@ -7,19 +7,15 @@ footer {
  flex-direction: column;
  padding:0;
  height: auto;
- background-color: #323133;
+ background-color: var(--uu-footer-background-color);
  /*font-size: 0.9rem;*/
  font-family: var(--uu-heading-font-family);
 }
 
 /* hyperlinks */
 footer a {
- color: #28939d !important;
+ color: var(--uu-link-hover-color);
  text-decoration: none;
-}
-
-footer a:hover {
- color: #28939d !important;
 }
 
 footer a:visited {
@@ -36,13 +32,9 @@ footer ul {
  margin: 0;
 }
 
-footer ul li a {
- color: #c3d7ee !important; 
-}
-
 /* content section */
 #content-footer  {
- color: #c3d7ee;
+color: hsl(0 0 85%);
  padding: 1% 2%;
 }
 
@@ -72,7 +64,6 @@ footer ul li a {
 
 #legal-footer ul li a {
  padding: 0 1.5rem;
- color: #c3d7ee !important; /* link colors differ from plain text color */
 }
 
 /* nsf section */
@@ -98,12 +89,6 @@ footer ul li a {
  height: 100%;
  flex: 0 1 90%;
  padding-left: 2%;
-}
-
-/* DD FIX THIS */
-/* this part adds an icon after external links, using FontAwesome*/
-footer.unidata a[href^="http://"]:after, a[href^="https://"]:after {
-  content: "c";
 }
 
 
