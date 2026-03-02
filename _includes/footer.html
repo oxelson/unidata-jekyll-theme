@@ -1,92 +1,38 @@
-<footer>
-  <div class="row is-flex">
-    <div class="col-sm-3">
-      <div class="triptych-left">
-        <div class="footer-logos">
-          <a class="noicon" href="{{ project_landing_page }}"> <img alt="{{ site.project_name }} Logo" src="{{ site.project_logo }}"/></a>
-        </div>
-        <p class="triptych-header">{{site.site_topic}}</p>
-        <ul>
-          <li>
-            {% if page.last_updated %}
-            <span>Page last updated:<br /></span> {{page.last_updated | date: "%B %-d, %Y" }}
-            {% endif %}
-          </li>
-          <li>
-            Documentation site last generated:<br /> {{ site.time | date: "%B %-d, %Y" }}
-          </li>
-        </ul>
-      </div>
-    </div>
+   <footer class="unidata">
 
-    <div class="col-sm-6">
-      <div class="triptych-center">
-        <div class="footer-logos-left">
-          <a class="noicon" href="https://www.nsf.gov/"> <img alt="NSF" src="https://assets.unidata.ucar.edu/images/logos/NSF-Unidata_lockup_horizontal_2023_light.png"/></a>
-        </div>
-        <div class="footer-logos">
-          <a class="noicon" href="https://www.ucar.edu/community-programs"> <img alt="UCP" src="https://assets.unidata.ucar.edu/images/logos/ucp-logo2_transparent.png"/></a>
-        </div>
-        <p class="triptych-header"><span style="color:rgba(0, 0, 0, 0);">NSF Unidata</span></p>
-          <p class="triptych-center">
-            NSF Unidata is s a member of the
-            <a href="https://www.ucp.ucar.edu/">UCAR Community Programs</a>,
-            managed by the
-            <a href="https://www.ucar.edu">University Corporation for Atmospheric Research</a>,
-            and funded by the
-            <a href="https://www.nsf.gov">U.S. National Science Foundation</a>.
-          </p>
-          <p class="triptych-center">
-            Read Unidata's
-            <a href="https://www.unidata.ucar.edu/legal/participation.html">Participation Policy</a>.
-          </p>
-            <table class="triptych-center">
-              <tr>
-                <td style="width:25%;text-align:left;">&copy; {{ site.time | date: "%Y" }} UCAR</td>
-                <td style="width:25%;text-align:center;">
-                  <a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a>
-                </td>
-                <td style="width:25%;text-align:center;">
-                  <a href="https://www.ucar.edu/accessibility">Web Accessibility</a>
-                </td>
+    <div id="content-footer">
+     <h2>NSF Unidata Support</h2>
+     <ul>
+      <li>NSF Unidata provides free technical support to our community members. For more information, please see our <a href="https://support.unidata.ucar.edu/conditions-of-support/">Conditions Of Support</a>.</li>
+      <li>Visit: <a href="https://support.unidata.ucar.edu/">NSF Unidata Support </a></li>
+      <li>Email: <a href="mailto:support@unidata.ucar.edu">support@unidata.ucar.edu</a></li>
+      <li>Report a security issue/vulnerability: <a href="mailto:security@unidata.ucar.edu">security@unidata.ucar.edu</a></li>
+     </ul>
+    </div> <!-- /#content-footer -->
 
-                <td style="width:25%;text-align:right;">
-                  <a href="https://www.ucar.edu/terms-of-use">Terms of Use</a>
-                </td>
-              </tr>
-            </table>
-      </div>
-    </div>
+    <div id="legal-footer">
+     <ul>
+      <li>&#169; NSF Unidata</li>
+      <li><a href="https://support.unidata.ucar.edu/conditions-of-support">Conditions of Support</a></li>
+      <li><a href="https://www.unidata.ucar.edu/legal/participation.html">Participation Policy</a></li>
+      <li><a href="https://www.ucar.edu/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://www.ucar.edu/terms-of-use">Terms of Use</a></li>
+      <li><a href="https://www.ucar.edu/accessibility">Accessibility</a></li>
+     </ul>
+    </div> <!-- /#legal-footer -->
 
-    <div class="col-sm-3">
-      <div class="triptych-right">
-        <div class="footer-logos">
-          <a class="noicon" href="https://unidata.ucar.edu/"> <img alt="Unidata Logo" src="https://assets.unidata.ucar.edu/images/logos/unilogo-32x32.png"/></a>
-        </div>
-        <p class="triptych-header">Contact NSF Unidata</p>
-        <ul>
-          <li>
-            For support:
-              <a href="mailto:support@unidata.ucar.edu">support@unidata.ucar.edu</a>
-          </li>
-          <li>
-            By
-              <a href="https://www.unidata.ucar.edu/about/index.html#visit">postal mail</a>
-            or
-              <a href="https://www.unidata.ucar.edu/about/index.html#visit">in person</a>
-          </li>
-          <li>
-            About this website:
-              <a href="mailto:plaza@unidata.ucar.edu">plaza@unidata.ucar.edu</a>
-          </li>
-          <li>
-            By telephone:
-            303.497.8643
-          </li>
-        </ul>
+    <div id="nsf-footer">
+     <a href="https://www.nsf.gov" class="logo">
+      <img src="/assets/images/nsf_logo_transparent.png" alt="U.S. National Science Foundation"/>
+     </a>
+     <div>
+      NSF Unidata is a member of the
+      <a href="https://www.ucp.ucar.edu/">UCAR Community Programs</a>,
+      managed by the
+      <a href="https://www.ucar.edu">University Corporation for Atmospheric Research</a>,
+      and funded by the
+      <a href="https://www.nsf.gov">U.S. National Science Foundation</a>.
+     </div>
+    </div> <!-- /#nsf-footer -->
 
-      </div>
-    </div>
-
-  </div>
-</footer>
+   </footer>
