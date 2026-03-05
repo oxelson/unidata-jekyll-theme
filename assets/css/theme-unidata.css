@@ -4,12 +4,19 @@
     font-size:16px;
 }
 
-h1, h2, h3, h4, h5 {
+/* h1, h2, h3, h4, h5 {
   color: #034250;
-}
+} */
 
 p {
     margin-top: 20px;
+}
+
+a {
+  color: var(--uu-link-color);
+}
+a:hover {
+  color: var(--uu-link-hover-color);
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -17,12 +24,35 @@ p {
     color: white;
 }
 
-.nav > li.active > a {
-    background-color: #034250; /* was #347DBE */
+.nav li a {
+    background-color: var(--uu-sidenav-background-color);
 }
 
-.nav > li > a:hover {
-    background-color: #06778F; /* was #248ec2 */
+.nav ul li a {
+    border-top: 1px solid var(--uu-sidenav-background-color); /* whitesmoke; */
+    background-color: var(--uu-sidenav-background-color);
+    padding-left: 10px;
+}
+
+.nav > li.active > a {
+    background-color: var(--uu-header-background-color); /* #034250; /* was #347DBE */
+}
+
+
+/* .nav > li > a:hover { */
+.nav li a:hover {
+    background-color: var(--uu-link-hover-color); /* #06778F; /* was #248ec2 */
+}
+
+.nav a:hover, .nav li.active > a {
+  background-color: #8D8D8D;
+  background-color: var(--uu-header-background-color);
+  color: #f5f5f5;
+}
+
+.nav > li,
+.nav > li li {
+    margin: 0;
 }
 
 div.navbar-collapse .dropdown-menu > li > a:hover {
@@ -47,8 +77,8 @@ a[data-toggle="tooltip"] {
 }
 
 .navbar-inverse {
-    background-color: #06778F;
-    border-color: #034250;
+    background-color: var(--uu-header-background-color); /* #06778F; */
+    border-color: var(--uu-heading-color); /* #034250; */
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
@@ -65,14 +95,21 @@ a[data-toggle="tooltip"] {
     border-color: #248ec2 !important;
 }
 
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: var(--uu-header-background-color); /* #034250; /* was #347DBE */
+}
+
+#search-input {
+    width: auto;
+}
+#search-demo-container ul#results-container {
+    top: 50px;
+}
+
 .btn-primary {
     color: #ffffff;
     background-color: #034250; /* was #347DBE */
     border-color: #034250; /* was #347DBE */
-}
-
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #034250; /* was #347DBE */
 }
 
 .btn-primary:hover,
@@ -110,11 +147,13 @@ li.sidebarTitle {
 .nav .sidebarTitle a:active,
 .nav .sidebarTitle a:hover,
 .nav .sidebarTitle a:focus {
-    background-color: #FFFFFF;
-    color: #034250 !important;
-    font-size:120%;
+    background-color: transparent;
+    color: var(--uu-heading-color);
+    font-family: var(--uu-heading-font-family);
+    letter-spacing: -2%;
+    font-size: 1em;
     padding: 0;
-    margin:0 0 20px 0;
+    margin:0 0 1em 0;
 }
 
 /* left-floated version menu */ /* DD 2020_04 */
@@ -144,7 +183,8 @@ div#toc {
     position: fixed;
     top: 100px;
     margin-top: 40px;
-    background: #FFFFFF;
+    background: var(--uu-sidenav-background-color);
+    padding: 0.5em;
 }
 
 div#toc.fa-list-ul {
@@ -165,12 +205,12 @@ div#toc ul {
     padding: 0;
     border-radius: 0;
     /* Need the font-family here to negate the font style of the fa-list-ul class. */
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--uu-text-font-family);
     font-size:100%;
 }
 
 div#toc ul li {
-    font-size: 100% !important;
+    /* font-size: 100% !important; */
     list-style: disc;
 }
 
@@ -185,8 +225,8 @@ div#toc ul li ul li::before {
     color: #7f8794;
 }
 
-#content {
+/* #content {
     border-bottom: 4px solid #DCDCDC;
-}
+} */
 
 

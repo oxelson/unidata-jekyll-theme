@@ -1,138 +1,137 @@
+/* ------------------------------------------- */
+/* Styling for elements defined in footer      */
+/* ------------------------------------------- */
+
 footer {
-  font-size: 0.8em;
-  font-family: "UbuntuRegular", Arial, Helvetica;
-  font-style: italic;
+ display: flex;
+ flex-direction: column;
+ padding:0;
+ height: auto;
+ background-color: var(--uu-footer-background-color);
+ /*font-size: 0.9rem;*/
+ font-family: var(--uu-heading-font-family);
 }
 
-footer div[class*='col-'] a:link, footer div[class*='col-'] a:visited {
-  color: #FFFFFF;
+/* hyperlinks */
+footer a {
+ color: var(--uu-link-hover-color);
+ text-decoration: none;
 }
 
-footer div[class*='col-'] a::after {
-  content: '';
+footer a:visited {
+ text-decoration: none;
 }
 
-div[class*='triptych-'] {
-  min-height: 100px;
-  color: #DDDDDD;
-  height: 100%;
+footer a::after {
+  display:none !important;
 }
 
-footer div.row {}
-
-footer div div div[class*='triptych-'] {
-  padding: 0em 0.6em;
+footer ul {
+ list-style: none;
+ padding: 0;
+ margin: 0;
 }
 
-footer div div.triptych-left {
-  background-color: #06778F;
+/* content section */
+#content-footer  {
+color: hsl(0 0 85%);
+ padding: 1% 2%;
 }
 
-footer div div.triptych-center {
-  background-color: #81B2C0;
+#content-footer h2 {
+ color: #FFFFFF; 
+ font-weight: 600;
+ text-transform: uppercase;
+ margin: 0;
+ padding: 0.9rem 0;
 }
 
-footer div div.triptych-right {
-  background-color: #034250;
+#content-footer li {
+ margin: 8px auto;
 }
 
-footer p.triptych-header {
-  color: #FFFFFF;
-  font-size: 1.0em;
-  font-style: normal;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-bottom: 2px solid #CCCCCC;
-  /* max-width: 95%; */
-  /* margin: 10px; */
-  padding: 0 0 5px 0;
-  margin-top: revert;
+/* legal section */
+#legal-footer  {
+ background-color: #000000;
+ color: #FFFFFF;
+ width: auto;
+ padding:1% 2%;
 }
 
-footer p.triptych-center {
-  text-align: center;
-  margin:unset;
+#legal-footer ul li {
+ display: inline;
 }
 
-footer table.triptych-center {
-  width: 100%;
-  background-color: #81B2C0;
-  margin: 0 auto;
-  border: none;
+#legal-footer ul li a {
+ padding: 0 1.5rem;
 }
 
-footer table.triptych-center tbody tr {
-  background-color: inherit;
+/* nsf section */
+#nsf-footer {
+ display: flex;
+ flex-direction: row;
+ background-color: #FFFFFF;
+ color: #000000;
+ padding: 1%;
 }
 
-footer table.triptych-center tbody tr td {
-  border-top: none;
+#nsf-footer a.logo {
+ flex: 0 1 8%;
 }
 
-footer div.footer-logos {
-  float: right;
-  max-height: 30px;
+#nsf-footer img {
+ width: 70px;
+ margin: 0;
+ padding: 0;
 }
 
-footer div.footer-logos img {
-	position: relative;
-	height: 24px;
-	top: 6px;
-	float:right;
-}
-
-footer div.footer-logos-left {
-  float:left;
-  max-height: 30px;
-}
-
-footer div.footer-logos-left img {
-	position: relative;
-	height: 30px;
-	top: 4px;
-	float:left;
-}
-
-footer div.row div[class*='col-'] ul {
-  padding-left: 0.3em;
-  padding-bottom: 0.5em;
-  margin-bottom: 0;
-  list-style: none;
-}
-
-footer div.row div[class*='col-'] ul li {
-  padding-bottom: 0.3em;
+#nsf-footer div {
+ height: 100%;
+ flex: 0 1 90%;
+ padding-left: 2%;
 }
 
 
-/* Small devices (tablets, 768px and up)
-   Below 768px the triptych turns into stacked horizontal bars
-*/
+/* ------------------------------------------- */
+/* Styling for narrow screens                  */
+/* ------------------------------------------- */
 
-@media (min-width: 768px) {
-  .row.is-flex {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .row.is-flex>[class*='col-'] {
-    display: flex;
-    flex-direction: column;
-  }
-  footer div.row div[class*='col-']:first-child {
-    padding-right: 0;
-  }
-  footer div.row div[class*='col-']:last-child {
-    padding-left: 0;
-    flex: 1 0; /* For Safari */
-  }
-  footer {
-    font-size: 0.7em;
-  }
+@media all and (max-width: 980px) {
+ /* Workaround for an IE bug with flexbox and max-width */
+ footer {
+  width:auto;
+ }
 }
 
-@media only screen and (min-width: 992px) {
-  footer {
-    font-size: 0.8em;
-  }
+/* Mirror what happens in the Unity threme with legal section links */
+@media all and (max-width: 900px) {
+ #legal-footer li a {
+  padding: 0 1rem !important;
+ }
+}
+
+@media all and (max-width: 850px) {
+ #legal-footer li a {
+  padding: 0 0.8rem !important;
+ }
+}
+
+@media all and (max-width: 800px) {
+ #legal-footer ul {
+  margin-bottom: 10px;
+ }
+ 
+ #legal-footer li {
+  display: block !important;
+  padding-top: 1rem !important;
+ }
+ #legal-footer li a {
+  padding:0 !important;
+ }
+}
+
+@media all and (max-width: 600px) {
+ footer {
+  flex-direction: column;
+ }
 }
