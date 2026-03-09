@@ -14,11 +14,11 @@ Perform the following steps once a release has been made and tagged on GitHub:
 * run `build.sh` to create a local multi-platform image
 * tag the latest image with the release version for docker.io and ghcr:
   ```
-  docker image tag unidata-jekyll-docs:latest docker.io/unidata/unidata-jekyll-docs:0.1.0
-  docker image tag unidata-jekyll-docs:latest ghcr.io/unidata/unidata-jekyll-docs:0.1.0
+  docker image tag unidata-jekyll-docs:latest docker.io/unidata/unidata-jekyll-docs:0.1.1
+  docker image tag unidata-jekyll-docs:latest ghcr.io/unidata/unidata-jekyll-docs:0.1.1
   ```
 * push the new images
   ```
-  docker image push docker.io/unidata/unidata-jekyll-docs:0.1.0
-  docker image push ghcr.io/unidata/unidata-jekyll-docs:0.1.0
+  docker image push docker.io/unidata/unidata-jekyll-docs:0.1.1
+  docker image push ghcr.io/unidata/unidata-jekyll-docs:0.1.1
   ```

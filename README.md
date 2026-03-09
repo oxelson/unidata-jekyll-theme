@@ -20,7 +20,7 @@ Your `Gemfile` should, at a minimum, look like:
 ```shell
 source 'https://rubygems.org'
 
-git 'https://github.com/Unidata/unidata-jekyll-theme.git', tag: 'v0.1.0' do
+git 'https://github.com/Unidata/unidata-jekyll-theme.git', tag: 'v0.1.1' do
   gem 'unidata-jekyll-theme'
   gem 'unidata-jekyll-plugins'
 end
@@ -36,7 +36,7 @@ Check out the [Building and live editing](#Building-and-live-editing) section fo
 To serve the unidata-jekyll-theme using the unidata-jekyll-docs image, go to the top of this repository and run:
 
 ```shell
-docker run -it --rm -e SRC_DIR="/unidata-jekyll-theme" -v .:/unidata-jekyll-theme -p 4000:4000 docker.io/unidata/unidata-jekyll-docs:0.1.0 serve --livereload
+docker run -it --rm -e SRC_DIR="/unidata-jekyll-theme" -v .:/unidata-jekyll-theme -p 4000:4000 docker.io/unidata/unidata-jekyll-docs:0.1.1 serve --livereload
 ```
 
 The SRC_DIR environment variable must be set.
@@ -46,7 +46,7 @@ This should be a directory at or under the bind mount point.
 Similarly, to build using the unidata-jekyll-docs image:
 
 ```shell
-docker run -it --rm -e DOCS_UID=$(id -u) -e SRC_DIR="/unidata-jekyll-theme" -v .:/unidata-jekyll-theme -v ./_site:/site docker.io/unidata/unidata-jekyll-docs:0.1.0 build
+docker run -it --rm -e DOCS_UID=$(id -u) -e SRC_DIR="/unidata-jekyll-theme" -v .:/unidata-jekyll-theme -v ./_site:/site docker.io/unidata/unidata-jekyll-docs:0.1.1 build
 ```
 
 Note the additional bind mount `-v ./_site:/site` and the inclusion of `-e DOCS_UID=$(id -u)`.
