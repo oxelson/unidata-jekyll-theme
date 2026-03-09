@@ -1,4 +1,4 @@
-# unidata-jekyll-theme
+# unidata-jekyll-theme and unidata-jekyll-plugins
 
 This repository contains a jekyll theme and associated plugins for Unidata documentation.
 This is a fork of the excellent [documentation-theme-jekyll](https://idratherbewriting.com/documentation-theme-jekyll) theme, with Unidata specific styling and extensions.
@@ -22,6 +22,7 @@ source 'https://rubygems.org'
 
 git 'https://github.com/Unidata/unidata-jekyll-theme.git', tag: 'v0.1.0' do
   gem 'unidata-jekyll-theme'
+  gem 'unidata-jekyll-plugins'
 end
 ```
 
@@ -54,7 +55,7 @@ The `DOCS_UID` environment variable is used to ensure the permissions of the ren
 
 #### A note on SRC_DIR
 
-Coordinating `SRC_DIR` and the bind mount containing the necessary files for a successful build can be tricky when the `includecodeblock` functionality of the theme is used.
+Coordinating `SRC_DIR` and the bind mount containing the necessary files for a successful build can be tricky when the `includecodeblock` functionality of the unidata-jekyll-plugins is used.
 
 For example, to serve the documentation of the netCDF-Java project for live editing, you would run the following from the root directory of the project:
 
