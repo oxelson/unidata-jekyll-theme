@@ -10,6 +10,19 @@ topnav_docvermenu:
       url:
       id: remove
 
+# if you do not need a topnav: or topnav_dropdowns: config for your documentation,
+# use an empty config, for example:
+#
+# topnav:
+#- title:
+#
+# or
+#
+# topnav_dropdowns:
+#- title:
+#
+# otherwise, the base theme will provide them for you.
+#
 topnav:
 - title: Topnav
   items:
