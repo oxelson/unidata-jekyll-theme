@@ -39,7 +39,7 @@ jekyll-redirect-from = 0.10.0
 jekyll-sass-converter = 1.3.0
 jekyll-seo-tag = 1.3.2
 jekyll-sitemap = 0.10.0
-jekyll-textile-converter = 0.1.0
+jekyll-textile-converter = 0.1.1
 jemoji = 0.6.2
 kramdown = 1.10.0
 liquid = 3.0.6
@@ -150,7 +150,7 @@ GEM
       jekyll-sass-converter (= 1.3.0)
       jekyll-seo-tag (= 1.3.1)
       jekyll-sitemap (= 0.10.0)
-      jekyll-textile-converter (= 0.1.0)
+      jekyll-textile-converter (= 0.1.1)
       jemoji (= 0.5.1)
       kramdown (= 1.9.0)
       liquid (= 3.0.6)
@@ -194,7 +194,7 @@ GEM
     jekyll-seo-tag (1.3.1)
       jekyll (~> 3.0)
     jekyll-sitemap (0.10.0)
-    jekyll-textile-converter (0.1.0)
+    jekyll-textile-converter (0.1.1)
       RedCloth (~> 4.0)
     jekyll-watch (1.3.1)
       listen (~> 3.0)
