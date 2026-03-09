@@ -2,7 +2,9 @@
 theme: unidata-jekyll-theme
 
 # this will appear in an HTML meta tag, sidebar, and perhaps elsewhere
-docset_version: major.minor
+# be sure to quote the version number; if you use major.minor, it will be treated as a float
+# and things like 5.10 will render as 5.1.
+docset_version: "major.minor"
 
 # this appears on the top navigation bar next to the home button
 topnav_title: Topnav Title
