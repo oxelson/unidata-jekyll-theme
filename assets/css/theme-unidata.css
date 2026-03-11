@@ -216,6 +216,13 @@ div#toc ul li ul li::before {
     content: "\25E6\00A0   ";
 }
 
+/* hid the toc on smaller screens */
+@media (max-width: 992px) {
+    #tg-sb-sidebar-toc {
+    display: none;
+    }
+}
+
 /* info.html alert callout */
 .alert-more-info {
     background-color: #d9e0f7;
