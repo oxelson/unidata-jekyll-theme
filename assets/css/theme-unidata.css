@@ -180,11 +180,9 @@ li.sidebarTitle {
 
 /* table of contents */
 div#toc {
-    position: fixed;
-    top: 100px;
     margin-top: 40px;
     background: var(--uu-sidenav-background-color);
-    padding: 0.5em;
+    padding: 1em;
 }
 
 div#toc.fa-list-ul {
@@ -216,6 +214,13 @@ div#toc ul li {
 
 div#toc ul li ul li::before {
     content: "\25E6\00A0   ";
+}
+
+/* hid the toc on smaller screens */
+@media (max-width: 992px) {
+    #tg-sb-sidebar-toc {
+    display: none;
+    }
 }
 
 /* info.html alert callout */
