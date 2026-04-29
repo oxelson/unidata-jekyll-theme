@@ -38,7 +38,7 @@
   /* Unidata Unity colors */
   --uu-heading-color: #00357a;
   --uu-header-background-color: hsl(from var(--uu-heading-color) h 40% 40%);
-  --uu-footer-background-color: #323133;
+  --uu-footer-background-color: #011837;
   --uu-body-text-color: var(--bs-body-color);
   --uu-body-background-color: var(--bs-body-bg);
   --uu-sidenav-background-color: hsl(from var(--bs-body-bg) h s 93%);
