@@ -8,18 +8,18 @@ footer {
   padding: 0;
   height: auto;
   background-color: var(--uu-footer-background-color);
-  /*font-size: 0.9rem;*/
   font-family: var(--uu-heading-font-family);
+  color: var(--uu-footer-text-color);
 }
 
 /* hyperlinks */
 footer a {
-  color: #42c0ff;
+  color: var(--uu-footer-link-color);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #34e1f4 !important;
+  color: var(--uu-footer-link-hover-color);
   text-decoration: none;
 }
 
@@ -39,12 +39,11 @@ footer ul {
 
 /* content section */
 #content-footer {
-  color: #c3d7ee;
   padding: 1% 2%;
 }
 
 #content-footer h2 {
-  color: #fdd509;
+  color: var(--bs-info);
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
@@ -57,8 +56,9 @@ footer ul {
 
 /* legal section */
 #legal-footer {
-  background-color: #00357A;
-  color: #fdd509;
+  background-color: var(--uu-footer-legal-background-color);
+  border-bottom: #455c7b solid 1px;
+  color: var(--bs-info);
   width: auto;
   padding: 1% 2%;
 }
@@ -69,7 +69,7 @@ footer ul {
 
 #legal-footer ul li a {
   padding: 0 1.5rem;
-  color: #c3d7ee !important;
+  color: var(--uu-footer-text-color);
   /* link colors differ from plain text color */
 }
 
@@ -78,8 +78,7 @@ footer ul {
 #nsf-footer {
   display: flex;
   flex-direction: row;
-  background-color: #556379;
-  color: #c3d7ee;
+  background-color: var(--uu-footer-nsf-background-color);
   padding: 1%;
 }
 

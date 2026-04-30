@@ -7,10 +7,10 @@ body {
   line-height: 1.7em;
   font-family: var(--uu-text-font-family);
   background-color: var(--uu-body-background-color);
-  background-image: var(--uu-body-background-image);
-  /* background-position: 150% 0%; */
+  background-image: var(--uu-body-background-image), var(--uu-body-background-image);
+  /* intensify bg image */
   background-repeat: no-repeat;
-  background-size: 25%;
+  background-size: 30%;
 }
 
 code,

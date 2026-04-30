@@ -38,7 +38,12 @@
   /* Unidata Unity colors */
   --uu-heading-color: #00357a;
   --uu-header-background-color: hsl(from var(--uu-heading-color) h 40% 40%);
-  --uu-footer-background-color: #011837;
+  --uu-footer-background-color: var(--bs-body-color);
+  --uu-footer-legal-background-color: hsl(from var(--uu-heading-color) h 40% 40%);
+  --uu-footer-nsf-background-color: #556379;
+  --uu-footer-text-color: #c3d7ee;
+  --uu-footer-link-color: #42c0ff;
+  --uu-footer-link-hover-color: #34e1f4;
   --uu-body-text-color: var(--bs-body-color);
   --uu-body-background-color: var(--bs-body-bg);
   --uu-sidenav-background-color: hsl(from var(--bs-body-bg) h s 93%);
