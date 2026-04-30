@@ -1,7 +1,7 @@
 .summary {
     color: #808080;
     border-left: 5px solid #ED1951;
-    font-size:16px;
+    font-size: 16px;
 }
 
 /* h1, h2, h3, h4, h5 {
@@ -13,14 +13,18 @@ p {
 }
 
 a {
-  color: var(--uu-link-color);
-}
-a:hover {
-  color: var(--uu-link-hover-color);
+    color: var(--uu-link-color);
 }
 
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    background-color: #06778F; /* was #248ec2 */
+a:hover {
+    color: var(--uu-link-hover-color);
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
+    background-color: #06778F;
+    /* was #248ec2 */
     color: white;
 }
 
@@ -29,39 +33,45 @@ a:hover {
 }
 
 .nav ul li a {
-    border-top: 1px solid var(--uu-sidenav-background-color); /* whitesmoke; */
+    border-top: 1px solid var(--uu-sidenav-background-color);
+    /* whitesmoke; */
     background-color: var(--uu-sidenav-background-color);
     padding-left: 10px;
 }
 
-.nav > li.active > a {
-    background-color: var(--uu-header-background-color); /* #034250; /* was #347DBE */
+.nav>li.active>a {
+    background-color: var(--uu-header-background-color);
+    /* #034250; /* was #347DBE */
 }
 
 
 /* .nav > li > a:hover { */
 .nav li a:hover {
-    background-color: var(--uu-link-hover-color); /* #06778F; /* was #248ec2 */
+    background-color: var(--uu-link-hover-color);
+    /* #06778F; /* was #248ec2 */
 }
 
-.nav a:hover, .nav li.active > a {
-  background-color: #8D8D8D;
-  background-color: var(--uu-header-background-color);
-  color: #f5f5f5;
+.nav a:hover,
+.nav li.active>a {
+    background-color: #8D8D8D;
+    background-color: var(--uu-header-background-color);
+    color: #f5f5f5;
 }
 
-.nav > li,
-.nav > li li {
+.nav>li,
+.nav>li li {
     margin: 0;
 }
 
-div.navbar-collapse .dropdown-menu > li > a:hover {
-    background-color: #034250; /* was #347DBE */
+div.navbar-collapse .dropdown-menu>li>a:hover {
+    background-color: #034250;
+    /* was #347DBE */
 }
 
-.nav li.thirdlevel > a {
+.nav li.thirdlevel>a {
     background-color: #FAFAFA !important;
-    color: #06778F; /* was #248ec2 */
+    color: #06778F;
+    /* was #248ec2 */
     font-weight: bold;
 }
 
@@ -72,44 +82,57 @@ a[data-toggle="tooltip"] {
 }
 
 /* Prevent navbar wrapping to fit within content div width */
-.navbar > .container.topnavlinks {
-  box-sizing: content-box;
+.navbar>.container.topnavlinks {
+    box-sizing: content-box;
 }
 
 .navbar-inverse {
-    background-color: var(--uu-header-background-color); /* #06778F; */
-    border-color: var(--uu-heading-color); /* #034250; */
+    background-color: var(--uu-header-background-color);
+    /* #06778F; */
+    border-color: var(--uu-heading-color);
+    /* #034250; */
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
     color: #034250;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
     background-color: #034250;
     color: #ffffff;
 }
 
 /* not sure if using this ...*/
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
     border-color: #248ec2 !important;
 }
 
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: var(--uu-header-background-color); /* #034250; /* was #347DBE */
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+    background-color: var(--uu-header-background-color);
+    /* #034250; /* was #347DBE */
 }
 
 #search-input {
     width: auto;
 }
+
 #search-demo-container ul#results-container {
     top: 50px;
 }
 
 .btn-primary {
     color: #ffffff;
-    background-color: #034250; /* was #347DBE */
-    border-color: #034250; /* was #347DBE */
+    background-color: #034250;
+    /* was #347DBE */
+    border-color: #034250;
+    /* was #347DBE */
 }
 
 .btn-primary:hover,
@@ -117,8 +140,10 @@ a[data-toggle="tooltip"] {
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-    background-color: #06778F; /* was #248ec2 */
-    border-color: #034250; /* was #347DBE */
+    background-color: #06778F;
+    /* was #248ec2 */
+    border-color: #034250;
+    /* was #347DBE */
 }
 
 .printTitle {
@@ -134,11 +159,11 @@ div.sidebarTitle {
 }
 
 li.sidebarTitle {
-    margin-top:40px;
-    font-weight:normal;
-    font-size:130%;
+    margin-top: 40px;
+    font-weight: normal;
+    font-size: 130%;
     color: #034250;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     margin-left: 5px;
 
 }
@@ -153,15 +178,16 @@ li.sidebarTitle {
     letter-spacing: -2%;
     font-size: 1em;
     padding: 0;
-    margin:0 0 1em 0;
+    margin: 0 0 1em 0;
 }
 
-/* left-floated version menu */ /* DD 2020_04 */
+/* left-floated version menu */
+/* DD 2020_04 */
 @media (min-width: 768px) {
-  ul.navbar-left > li#vermenu > a {
-    font-size: 18px;
-    font-weight: 600;
-  }
+    ul.navbar-left>li#vermenu>a {
+        font-size: 18px;
+        font-weight: 600;
+    }
 }
 
 /* bread crumbs */
@@ -170,6 +196,7 @@ li.sidebarTitle {
     font-size: 12px;
     border-bottom: 1px solid #DCDCDC;
 }
+
 #breadcrumbs .bcEnd {
     font-weight: bold;
 }
@@ -188,8 +215,9 @@ div#toc {
 div#toc.fa-list-ul {
     color: #666666;
 }
+
 div#toc>ul::before {
-    font-size:130%;
+    font-size: 130%;
     content: 'On This Page: ';
     padding: 0 0 0 20px !important;
     position: relative;
@@ -204,7 +232,7 @@ div#toc ul {
     border-radius: 0;
     /* Need the font-family here to negate the font style of the fa-list-ul class. */
     font-family: var(--uu-text-font-family);
-    font-size:100%;
+    font-size: 100%;
 }
 
 div#toc ul li {
@@ -219,7 +247,7 @@ div#toc ul li ul li::before {
 /* hid the toc on smaller screens */
 @media (max-width: 992px) {
     #tg-sb-sidebar-toc {
-    display: none;
+        display: none;
     }
 }
 
@@ -233,5 +261,3 @@ div#toc ul li ul li::before {
 /* #content {
     border-bottom: 4px solid #DCDCDC;
 } */
-
-

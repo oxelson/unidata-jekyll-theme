@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-gemspec :name => 'unidata-jekyll-plugins'
-gemspec :name => 'unidata-jekyll-theme'
+
+git 'https://github.com/Unidata/unidata-jekyll-theme.git', tag: 'v0.1.1' do
+  gem 'unidata-jekyll-theme'
+  gem 'unidata-jekyll-plugins'
+end
