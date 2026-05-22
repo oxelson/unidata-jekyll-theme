@@ -263,12 +263,14 @@ div#toc ul li ul li::before {
 } */
 
 /* create code block language label */
-div.highlighter-rouge {
+div.highlighter-rouge,
+figure.highlight {
     position: relative;
 }
 
 /* add a label to the top of the code block with the language */
-div.highlighter-rouge::before {
+div.highlighter-rouge::before,
+figure.highlight::before {
     content: attr(data-lang);
     position: absolute;
     top: 0;
@@ -286,4 +288,10 @@ div.highlighter-rouge::before {
 /* make room for the language label */
 div.highlighter-rouge pre.highlight {
     padding-top: 40px
+}
+
+/* for annotated code blocks */
+figure.highlight pre {
+    margin: 0;
+    padding-top: 40px;
 }

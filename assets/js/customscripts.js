@@ -180,4 +180,14 @@ function detectCodeBlockType() {
       block.dataset.lang = '</>  ' + lang;
     }
   });
+
+  // annotated code blocks start with figure.highlight
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    // get the data-lang value
+    let lang = block.querySelector('code[data-lang]')?.dataset.lang;
+    // add the language as a data-lang attribute for the block element
+    if (lang) {
+      block.dataset.lang = '</>  ' + lang;
+    }
+  });
 }
