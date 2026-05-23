@@ -261,3 +261,37 @@ div#toc ul li ul li::before {
 /* #content {
     border-bottom: 4px solid #DCDCDC;
 } */
+
+/* create code block language label */
+div.highlighter-rouge,
+figure.highlight {
+    position: relative;
+}
+
+/* add a label to the top of the code block with the language */
+div.highlighter-rouge::before,
+figure.highlight::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-left: 0.9rem;
+    font-family: var(--uu-heading-font-family);
+    text-transform: uppercase;
+    color: var(--uu-heading-color);
+    font-size: 0.95rem;
+    background-color: #ECEEEC;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.175);
+}
+
+/* make room for the language label */
+div.highlighter-rouge pre.highlight {
+    padding-top: 40px
+}
+
+/* for annotated code blocks */
+figure.highlight pre {
+    margin: 0;
+    padding-top: 40px;
+}

@@ -53,15 +53,15 @@ function updateVersionMenu() {
     async: true
   });
 
-  request.done(function(data) {
+  request.done(function (data) {
     // Remove menu placeholder
     $("li#remove").remove();
 
     // Build menu entries
-    $.each(data.releases, function(index, rel) {
+    $.each(data.releases, function (index, rel) {
       let pVer = rel.version;
-      $.each(rel.docsets, function(index, docset) {
-        if (localBuild || (docsetName === index))  {
+      $.each(rel.docsets, function (index, docset) {
+        if (localBuild || (docsetName === index)) {
           let pDoc = docset.baseUrl;
           // docURL is a full path to the docset index file. Build path to current page instead.
           pDoc = pDoc.substring(0, pDoc.lastIndexOf("/"));
@@ -77,7 +77,7 @@ function updateVersionMenu() {
     });
   });
 
-  request.fail(function(data) {
+  request.fail(function (data) {
     // Remove menu placeholder
     $("li#remove").remove();
     // Insert an error indicator. Maybe this should link somewhere?
@@ -87,25 +87,25 @@ function updateVersionMenu() {
 };
 // end updateMenu()
 
-$( document ).ready(function() {
+$(document).ready(function () {
 
   //this script says, if the height of the viewport is greater than 800px, then insert affix class, which makes the nav bar float in a fixed
   // position as your scroll. if you have a lot of nav items, this height may not work for you.
   var h = $(window).height();
   //console.log (h);
   if (h > 800) {
-    $( "#mysidebar" ).attr("class", "nav affix");
+    $("#mysidebar").attr("class", "nav affix");
   }
   // activate tooltips. although this is a bootstrap js function, it must be activated this way in your theme.
   $('[data-toggle="tooltip"]').tooltip({
-    placement : 'top'
+    placement: 'top'
   });
 
   // CUSTOM CODE FOR BREADCRUMBS TO USE WITH FUNCTION DEFINED BELOW.
   let activeParents = $(".nav li.active").parents("li");
   // Look to see how many parents exist.
   if ($(activeParents).length > 0) {
-    $(activeParents).each(function() {
+    $(activeParents).each(function () {
       addToBreadCrumbs($(this).children("a").text());
     });
   }
@@ -116,6 +116,9 @@ $( document ).ready(function() {
   anchors.add('h2,h3,h4,h5');
 
   updateVersionMenu();
+
+  // decorate code blocks
+  detectCodeBlockType();
 });
 
 // IT ADDS PARENT CATEGORY TABS INTO BREADCRUMBS.
@@ -129,9 +132,9 @@ function addToBreadCrumbs(parentText) {
 
 // needed for nav tabs on pages. See Formatting > Nav tabs for more details.
 // script from http://stackoverflow.com/questions/10523433/how-do-i-keep-the-current-tab-active-with-twitter-bootstrap-after-a-page-reload
-$(function() {
+$(function () {
   var json, tabsState;
-  $('a[data-toggle="pill"], a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+  $('a[data-toggle="pill"], a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var href, json, parentId, tabsState;
 
     tabsState = localStorage.getItem("tabs-state");
@@ -146,14 +149,45 @@ $(function() {
   tabsState = localStorage.getItem("tabs-state");
   json = JSON.parse(tabsState || "{}");
 
-  $.each(json, function(containerId, href) {
+  $.each(json, function (containerId, href) {
     return $("#" + containerId + " a[href=" + href + "]").tab('show');
   });
 
-  $("ul.nav.nav-pills, ul.nav.nav-tabs").each(function() {
+  $("ul.nav.nav-pills, ul.nav.nav-tabs").each(function () {
     var $this = $(this);
     if (!json[$this.attr("id")]) {
       return $this.find("a[data-toggle=tab]:first, a[data-toggle=pill]:first").tab("show");
     }
   });
 });
+
+
+/*
+ * Looks for code blocks in the page and gets the language of the code block from
+ * the "language-" class. Adds the language as a data-lang attribute to the block,
+ * which is used by the CSS to add a label to the block. 
+ * 
+ * JO 2026-05-22
+ */
+function detectCodeBlockType() {
+  // code blocks start with div.highlighter-rouge.
+  document.querySelectorAll('div.highlighter-rouge').forEach((block) => {
+    // look for a class that starts with "language-". 
+    const langClass = [...block.classList].find(c => c.startsWith('language-'));
+    // add the language as a data-lang attribute.
+    if (langClass) {
+      const lang = langClass.replace('language-', '');
+      block.dataset.lang = '</>  ' + lang;
+    }
+  });
+
+  // annotated code blocks start with figure.highlight
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    // get the data-lang value
+    let lang = block.querySelector('code[data-lang]')?.dataset.lang;
+    // add the language as a data-lang attribute for the block element
+    if (lang) {
+      block.dataset.lang = '</>  ' + lang;
+    }
+  });
+}
