@@ -40,6 +40,7 @@ which in markdown is simply:
 ~~~~
 
 While this technically "works", it's not very friendly for documentation, as before using the code inside the block, a user must manually:
+
 * remove annotations (e.g. `(1)`, `(2)`)
 * fix indentation
 
@@ -74,3 +75,5 @@ This is archived though the `highlight_with_annotations` block:
 * {% raw %}{% annotation 1 %}{% endraw %} Explanation of `configTag`...
 * {% raw %}{% annotation 2 %}{% endraw %} Explanation of `otherConfigTag`...
 ~~~
+
+As with regular code blocks, the [language label](code_blocks.html#code-block-language-label) will be displayed for annotated code blocks.

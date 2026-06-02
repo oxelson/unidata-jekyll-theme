@@ -36,6 +36,9 @@ entries:
           - title: Images
             url: /images.html
             output: web, pdf
+          - title: Code Blocks
+            url: /code_blocks.html
+            output: web, pdf
           - title: Files
             url: /files.html
             output: web, pdf
@@ -60,6 +63,9 @@ entries:
           - title: Table Of Contents
             url: /toc.html
             output: web, pdf
+          - title: Adding Custom CSS 
+            url: /custom_css.html
+            output: web, pdf  
             subfolders:
               - title: Unidata Jekyll Plugins
                 output: web, pdf

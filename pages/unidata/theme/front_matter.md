@@ -1,6 +1,6 @@
 ---
 title: Front Matter
-last_updated: 2021-04-01
+last_updated: 2026-06-01
 toc: false
 sidebar: unidata_sidebar
 permalink: front_matter.html
@@ -27,3 +27,15 @@ The Unidata extensions to the base theme added a breadcrumb feature.
 By default, the breadcumbs are enabled.
 To disable the breadcrumbs on a given page, set `breadcrumbs: false` in the front matter.
 Note that this page was generated using `breadcrumbs: false` in the front matter of the source markdown file.
+
+## SCSS Files
+
+If using **[custom CSS](custom_css.html)**, your SCSS file will need to start with two lines of triple dashes (`---`), followed by the `@import "unidata-jekyll-theme";` line:
+
+```scss
+---
+---
+@import "unidata-jekyll-theme";
+
+// custom css here
+```
