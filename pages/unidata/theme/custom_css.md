@@ -33,13 +33,11 @@ Add the following content exactly as it appears to the `customstyles.scss` file:
 ```scss
 ---
 ---
-@import "unidata-jekyll-theme";
 
 // custom css here
 ```
 
 The two lines of triple dashes (`---`) at the top of the file tells Jekyll to process the file.
-The `@import "unidata-jekyll-theme";` lines tells Jekyll to use the Unidata theme.
 
 ## Add Your Custom CSS
 
