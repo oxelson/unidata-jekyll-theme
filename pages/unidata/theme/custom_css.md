@@ -26,5 +26,5 @@ project_docs/
 
 ## Add Your Custom CSS
 
-Ass your custom CSS to the `assets/css/customstyles.css` file you created.
-Jekyll will merge this CSS into the main Unidata theme's `customstyles.css` file as it compiles the project.
+Add your custom CSS to the `assets/css/customstyles.css` file you created.
+Jekyll will insert this CSS into the main Unidata theme's empty `customstyles.css` file as it compiles the project.
